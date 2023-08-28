@@ -59,9 +59,11 @@ Your readme will have various images and gifs on it. Upload a test image and tes
 [Hyperlink Text](https://en.wikipedia.org/wiki/Ural_Mountains)      
 
 ### Test Image
+
 ![Forest around mount Yamantau](images/Лес_вокруг_г.Ямантау.jpg)
 
 ### Test GIF
+
 ![Crying emoji evaporates](images/crying-emoji-dies.gif)
 
 
