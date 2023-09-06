@@ -16,29 +16,58 @@
 
 This is a 4-part assignment.
 **Part I:** Make code for a countdown from 10 to 0 that prints in the serial monitor.
+
 **Part II:** Make a red light flash each second of the countdown and have a green one turn on at launch.
+
 **Part III:** Add a button that triggers the launch.
+
 **Part IV:** Move a servo on liftoff as if it were the launch tower.
 
 ### Evidence 
 
 **Part I:**
+
 **Part II:**
+
 **Part III:**
+
 **Part IV:**
 
 ### Wiring
 
 **Part I:** N/A
+
 **Part II:**
+
 **Part III:**
+
 **Part IV:**
 
 ### Code
 
-Part I:
 <details>
-<summary><b>Click to Show<b></summary>
+<summary><b>Part I<b></summary>
+    
+<p>
+    
+```python
+# type: ignore
+import board
+import digitalio
+from time import sleep
+
+for i in range (10,0,-1): #start, stop, step; nice and clean
+    print(i)
+    sleep(1)
+print("Liftoff")
+    
+```
+</p>  
+    
+</details>
+    
+<details>
+<summary><b>Part I<b></summary>
     
 <p>
     
@@ -57,8 +86,8 @@ print("Liftoff")
 </p>  
     
 </details>
-    
-**Part II:**
+
+
 **Part III:**
 **Part IV:**
 
