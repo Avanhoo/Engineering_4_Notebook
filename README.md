@@ -36,7 +36,7 @@ This is a 4-part assignment.
 
 ### Code
 
-**Part I:** 
+Part I:
 <details>
 <summary><b>Click to Show<b></summary>
     
