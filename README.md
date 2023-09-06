@@ -15,6 +15,7 @@
 ### Assignment Description
 
 This is a 4-part assignment.
+
 **Part I:** Make code for a countdown from 10 to 0 that prints in the serial monitor.
 
 **Part II:** Make a red light flash each second of the countdown and have a green one turn on at launch.
@@ -111,8 +112,11 @@ print("Liftoff")
 ### Reflection
 
 **Part I:**
+
 **Part II:**
+
 **Part III:**
+
 **Part IV:**
 
 
