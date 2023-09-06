@@ -65,22 +65,15 @@ print("Liftoff")
 </p>  
     
 </details>
+
     
 <details>
-<summary><b>Part I<b></summary>
+<summary><b>Part II<b></summary>
     
 <p>
     
-```
-# type: ignore
-import board
-import digitalio
-from time import sleep
+```python
 
-for i in range (10,0,-1): #start, stop, step; nice and clean
-    print(i)
-    sleep(1)
-print("Liftoff")
     
 ```
 </p>  
@@ -88,8 +81,32 @@ print("Liftoff")
 </details>
 
 
-**Part III:**
-**Part IV:**
+<details>
+<summary><b>Part III<b></summary>
+    
+<p>
+    
+```python
+
+    
+```
+</p>  
+    
+</details>
+
+<details>
+<summary><b>Part IV<b></summary>
+    
+<p>
+    
+```python
+
+    
+```
+</p>  
+    
+</details>
+
 
 ### Reflection
 
