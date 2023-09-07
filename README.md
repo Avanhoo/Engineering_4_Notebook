@@ -46,6 +46,8 @@ Move a servo on liftoff as if it were the launch tower.
 
 **Part II:**
 
+![Wiring2](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/92c9e949-5b6b-40d4-9697-71a5da441b7d)
+
 **Part III:**
 
 **Part IV:**
