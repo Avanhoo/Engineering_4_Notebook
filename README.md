@@ -28,6 +28,8 @@ This is a 4-part assignment.
 
 **Part I:**
 
+![Part I Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
+
 **Part II:**
 
 **Part III:**
@@ -74,8 +76,27 @@ print("Liftoff")
 <p>
     
 ```python
+# type: ignore
+import board
+import digitalio
+from time import sleep
 
-    
+Rled = digitalio.DigitalInOut(board.GP2) # Fourth pin down, top left
+Rled.direction = digitalio.Direction.OUTPUT
+Gled = digitalio.DigitalInOut(board.GP0) # First pin, top left
+Gled.direction = digitalio.Direction.OUTPUT
+
+
+for i in range (10,0,-1): #start, stop, step; nice and clean
+    print(i)
+    Rled.value = True # Flash red
+    sleep(.1)
+    Rled.value = False
+    sleep(.9)
+print("Liftoff")
+Gled.value = True
+sleep(5)
+
 ```
 </p>  
     
@@ -113,7 +134,11 @@ print("Liftoff")
 
 **Part I:**
 
+This was a very simple start, but I made sure to use a for loop to make the countdown as simple as possible.
+
 **Part II:**
+
+I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wron pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
 
 **Part III:**
 
