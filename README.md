@@ -49,7 +49,7 @@ This is a 4-part assignment.
 ### Code
 
 <details>
-<summary><b>Part I<b></summary>
+<summary><b>Part I</b></summary>
     
 <p>
     
@@ -71,7 +71,7 @@ print("Liftoff")
 
     
 <details>
-<summary><b>Part II<b></summary>
+<summary><b>Part II</b></summary>
     
 <p>
     
@@ -104,7 +104,7 @@ sleep(5)
 
 
 <details>
-<summary><b>Part III<b></summary>
+<summary><b>Part III</b></summary>
     
 <p>
     
@@ -117,7 +117,7 @@ sleep(5)
 </details>
 
 <details>
-<summary><b>Part IV<b></summary>
+<summary><b>Part IV</b></summary>
     
 <p>
     
