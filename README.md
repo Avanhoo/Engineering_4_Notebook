@@ -84,6 +84,7 @@ print("Liftoff")
 <p>
     
 ```python
+
 # type: ignore
 import board
 import digitalio
@@ -117,8 +118,43 @@ sleep(5)
 <p>
     
 ```python
+# type: ignore
+import board
+from digitalio import Direction, DigitalInOut, Pull
+from time import sleep
 
-    
+Rled = DigitalInOut(board.GP2) # Fourth pin down, top left
+Rled.direction = Direction.OUTPUT
+Gled = DigitalInOut(board.GP0) # First pin, top left
+Gled.direction = Direction.OUTPUT
+button = DigitalInOut(board.GP28) # 7th pin down, right side
+button.direction = Direction.INPUT
+button.pull = Pull.UP
+launch = False
+print("System Active")
+
+while True:
+    while button.value:
+        sleep(.1)
+    for i in range (10,-1,-1): #start, stop, step; nice and clean
+        print("t: -" + str(i))
+        Rled.value = True # Flash red
+        sleep(.1)
+        Rled.value = False
+        sleep(.9)
+        if not button.value: # Exits for loop and restarts program
+            print("ABORT")
+            break
+        if i == 0:
+            launch = True
+
+    if launch: # Makes sure it only launches if the countdown is finished
+        launch = False
+        print("Liftoff")
+        Gled.value = True
+        sleep(5)
+    sleep(.5)
+
 ```
 </p>  
     
