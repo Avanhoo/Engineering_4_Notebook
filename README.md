@@ -3,8 +3,10 @@
 &nbsp;
 
 ## Table of Contents
+* [Launchpad](#launchpad)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 * [Onshape_Assignment_Template](#onshape_assignment_template)
+
 
 &nbsp;
 
@@ -16,17 +18,23 @@
 
 This is a 4-part assignment.
 
-**Part I:** Make code for a countdown from 10 to 0 that prints in the serial monitor.
+**Part I:** 
+Make code for a countdown from 10 to 0 that prints in the serial monitor.
 
-**Part II:** Make a red light flash each second of the countdown and have a green one turn on at launch.
+**Part II:** 
+Make a red light flash each second of the countdown and have a green one turn on at launch.
 
-**Part III:** Add a button that triggers the launch.
+**Part III:** 
+Add a button that triggers the launch.
 
-**Part IV:** Move a servo on liftoff as if it were the launch tower.
+**Part IV:** 
+Move a servo on liftoff as if it were the launch tower.
 
 ### Evidence 
 
 **Part I:**
+
+![Part I Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
 
 **Part II:**
 
@@ -40,14 +48,18 @@ This is a 4-part assignment.
 
 **Part II:**
 
+![Wiring2](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/92c9e949-5b6b-40d4-9697-71a5da441b7d)
+
 **Part III:**
+
+![Wiring3](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/96f06c19-8941-4005-8546-8e5703e3a2ac)
 
 **Part IV:**
 
 ### Code
 
 <details>
-<summary><b>Part I<b></summary>
+<summary><b>Part I</b></summary>
     
 <p>
     
@@ -69,13 +81,33 @@ print("Liftoff")
 
     
 <details>
-<summary><b>Part II<b></summary>
+<summary><b>Part II</b></summary>
     
 <p>
     
 ```python
 
-    
+# type: ignore
+import board
+import digitalio
+from time import sleep
+
+Rled = digitalio.DigitalInOut(board.GP2) # Fourth pin down, top left
+Rled.direction = digitalio.Direction.OUTPUT
+Gled = digitalio.DigitalInOut(board.GP0) # First pin, top left
+Gled.direction = digitalio.Direction.OUTPUT
+
+
+for i in range (10,0,-1): #start, stop, step; nice and clean
+    print(i)
+    Rled.value = True # Flash red
+    sleep(.1)
+    Rled.value = False
+    sleep(.9)
+print("Liftoff")
+Gled.value = True
+sleep(5)
+
 ```
 </p>  
     
@@ -83,20 +115,55 @@ print("Liftoff")
 
 
 <details>
-<summary><b>Part III<b></summary>
+<summary><b>Part III</b></summary>
     
 <p>
     
 ```python
+# type: ignore
+import board
+from digitalio import Direction, DigitalInOut, Pull
+from time import sleep
 
-    
+Rled = DigitalInOut(board.GP2) # Fourth pin down, top left
+Rled.direction = Direction.OUTPUT
+Gled = DigitalInOut(board.GP0) # First pin, top left
+Gled.direction = Direction.OUTPUT
+button = DigitalInOut(board.GP28) # 7th pin down, right side
+button.direction = Direction.INPUT
+button.pull = Pull.UP
+launch = False
+print("System Active")
+
+while True:
+    while button.value:
+        sleep(.1)
+    for i in range (10,-1,-1): #start, stop, step; nice and clean
+        print("t: -" + str(i))
+        Rled.value = True # Flash red
+        sleep(.1)
+        Rled.value = False
+        sleep(.9)
+        if not button.value: # Exits for loop and restarts program
+            print("ABORT")
+            break
+        if i == 0:
+            launch = True
+
+    if launch: # Makes sure it only launches if the countdown is finished
+        launch = False
+        print("Liftoff")
+        Gled.value = True
+        sleep(5)
+    sleep(.5)
+
 ```
 </p>  
     
 </details>
 
 <details>
-<summary><b>Part IV<b></summary>
+<summary><b>Part IV</b></summary>
     
 <p>
     
@@ -112,10 +179,13 @@ print("Liftoff")
 ### Reflection
 
 **Part I:**
+This was a very simple start, but I made sure to use a for loop to make the countdown as simple as possible.
 
 **Part II:**
+I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wrong pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
 
 **Part III:**
+The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
 
 **Part IV:**
 
