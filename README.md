@@ -37,11 +37,11 @@ Move a servo on liftoff as if it were the launch tower.
 ![Part I Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
 
 **Part II:**
-
+Waiting on Google Drive
 **Part III:**
-
+Waiting on Google Drive
 **Part IV:**
-
+Waiting on Google Drive
 ### Wiring
 
 **Part I:** N/A
