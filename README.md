@@ -179,11 +179,9 @@ while True:
 ### Reflection
 
 **Part I:**
-
 This was a very simple start, but I made sure to use a for loop to make the countdown as simple as possible.
 
 **Part II:**
-
 I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wrong pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
 
 **Part III:**
