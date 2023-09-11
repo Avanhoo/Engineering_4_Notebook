@@ -52,6 +52,8 @@ Move a servo on liftoff as if it were the launch tower.
 
 **Part III:**
 
+![Wiring3](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/96f06c19-8941-4005-8546-8e5703e3a2ac)
+
 **Part IV:**
 
 ### Code
@@ -182,9 +184,10 @@ This was a very simple start, but I made sure to use a for loop to make the coun
 
 **Part II:**
 
-I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wron pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
+I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wrong pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
 
 **Part III:**
+The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
 
 **Part IV:**
 
