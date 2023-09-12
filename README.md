@@ -59,6 +59,8 @@ Waiting on Google Drive
 
 **Part IV:**
 
+![Wiring4](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/4a5ecc07-3685-4481-b139-b2c34f081762)
+
 ### Code
 
 <details>
