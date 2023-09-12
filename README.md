@@ -59,6 +59,8 @@ Waiting on Google Drive
 
 **Part IV:**
 
+![Wiring4](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/4a5ecc07-3685-4481-b139-b2c34f081762)
+
 ### Code
 
 <details>
@@ -202,7 +204,7 @@ while True:
     servo.angle = 0 # Resets system
     Gled.value = False
     
-    for i in range (10,-1,-1): #start, stop, step; nice and clean
+    for i in range (10,0,-1): #start, stop, step; nice and clean
         print("t: -" + str(i))
         Rled.value = True # Flash red
         sleep(.2)
@@ -218,7 +220,7 @@ while True:
                 Rled.value = False
                 sleep(.03)
             break # Exits the countdown for loop
-        if i == 0: # Makes sure it only launches if the countdown is finished
+        if i == 1: # Makes sure it only launches if the countdown is finished
             launch = True
 
     if launch: # Same as above
@@ -249,7 +251,7 @@ I had a bit of difficulty in getting the lights to turn on, which I realize was 
 The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
 
 **Part IV:**
-
+Ironically the servo was the easiest part of this whole assignment. We used the circuitpython motor library which made it super simple, and I decided to touch up the code so that it would loop properly.
 
 
 
