@@ -28,7 +28,7 @@ while True:
     servo.angle = 0 # Resets system
     Gled.value = False
     
-    for i in range (10,-1,-1): #start, stop, step; nice and clean
+    for i in range (10,0,-1): #start, stop, step; nice and clean
         print("t: -" + str(i))
         Rled.value = True # Flash red
         sleep(.2)
