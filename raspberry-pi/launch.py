@@ -15,7 +15,6 @@ button.pull = Pull.UP
 servo_pwm = pwmio.PWMOut(board.GP27, duty_cycle=2 ** 15, frequency=50)
 servo = servo.Servo(servo_pwm, min_pulse=500, max_pulse=2500)
 
-
 launch = False
 print("System Active")
 
@@ -31,9 +30,16 @@ while True:
     for i in range (10,0,-1): #start, stop, step; nice and clean
         print("t: -" + str(i))
         Rled.value = True # Flash red
-        sleep(.2)
+        for u in range (0,20): # Instead of just doing a sleep(), I make it move the servo and sleep in very small increments many times, 
+            if i <= 3:         # so that the servo moves smoothly and the rest of the code sleeps at the same time
+                servo.angle += 1
+            sleep(1/60)
         Rled.value = False
-        sleep(.8)
+        for u in range (0,40): 
+            if i <= 3: # The servo only moves when the countdown reaches t: -3
+                servo.angle += 1
+            sleep(1/60)
+
         if not button.value: # Exits for loop and restarts program
             print("ABORT")
             Rled.value = True
@@ -46,6 +52,7 @@ while True:
             break # Exits the countdown for loop
         if i == 1: # Makes sure it only launches if the countdown is finished
             launch = True
+        
 
     if launch: # Same as above
         launch = False
