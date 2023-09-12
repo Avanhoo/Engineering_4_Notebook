@@ -44,7 +44,7 @@ while True:
                 Rled.value = False
                 sleep(.03)
             break # Exits the countdown for loop
-        if i == 0: # Makes sure it only launches if the countdown is finished
+        if i == 1: # Makes sure it only launches if the countdown is finished
             launch = True
 
     if launch: # Same as above
