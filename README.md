@@ -37,14 +37,17 @@ Move a servo on liftoff as if it were the launch tower.
 ![Part 1 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
 
 **Part II:**
+
 ![Part 2 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/6989a081-3cb4-4c9f-9207-1bd5c7cb4c68)
 
 
 **Part III:**
+
 ![Part 3 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2a900709-ec32-4b81-ab43-73f1254401d8)
 
 
 **Part IV:**
+
 ![Part 4 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/42674451-f5ba-4e0f-91cf-3503e56eb447)
 
 
