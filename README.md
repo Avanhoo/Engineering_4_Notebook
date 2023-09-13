@@ -258,7 +258,7 @@ I had a bit of difficulty in getting the lights to turn on, which I realize was 
 The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
 
 **Part IV:**
-Ironically the servo was the easiest part of this whole assignment. We used the circuitpython motor library which made it super simple, and I decided to touch up the code so that it would loop properly.
+Ironically the servo was the easiest part of this whole assignment. We used the circuitpython motor library which made it super simple, and I decided to touch up the code so that it would loop properly. I did decide to do the spicy version again, which I did by replacing the sleeps I used to make the light blink with for loops that swept the servo and slept at the same time.
 
 
 
