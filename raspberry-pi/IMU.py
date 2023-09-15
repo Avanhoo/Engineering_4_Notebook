@@ -19,9 +19,9 @@ rZ = 0
 delay = .1
 
 sleep(delay)
-xO = -(imu.acceleration[0])
-yO = -(imu.acceleration[1])
-zO = -(imu.acceleration[2])
+xO = -(imu.acceleration[0],2)
+yO = -(imu.acceleration[1],2)
+zO = -(imu.acceleration[2],2)
 print (xO, yO, zO)
 sleep(delay)
 
