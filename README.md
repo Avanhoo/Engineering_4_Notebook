@@ -34,16 +34,23 @@ Move a servo on liftoff as if it were the launch tower.
 
 **Part I:**
 
-![Part I Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
+![Part 1 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3e9009f1-002f-4a35-924e-69918b6b5b1c)
 
 **Part II:**
-Waiting on Google Drive
+
+![Part 2 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/6989a081-3cb4-4c9f-9207-1bd5c7cb4c68)
+
 
 **Part III:**
-Waiting on Google Drive
+
+![Part 3 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2a900709-ec32-4b81-ab43-73f1254401d8)
+
 
 **Part IV:**
-Waiting on Google Drive
+
+![Part 4 Proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/42674451-f5ba-4e0f-91cf-3503e56eb447)
+
+
 
 ### Wiring
 
@@ -251,7 +258,7 @@ I had a bit of difficulty in getting the lights to turn on, which I realize was 
 The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
 
 **Part IV:**
-Ironically the servo was the easiest part of this whole assignment. We used the circuitpython motor library which made it super simple, and I decided to touch up the code so that it would loop properly.
+Ironically the servo was the easiest part of this whole assignment. We used the circuitpython motor library which made it super simple, and I decided to touch up the code so that it would loop properly. I did decide to do the spicy version again, which I did by replacing the sleeps I used to make the light blink with for loops that swept the servo and slept at the same time.
 
 
 
