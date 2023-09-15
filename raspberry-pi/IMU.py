@@ -19,15 +19,15 @@ rZ = 0
 delay = .1
 
 sleep(delay)
-xO = -(imu.acceleration[0],2)
-yO = -(imu.acceleration[1],2)
-zO = -(imu.acceleration[2],2)
+xO = -(imu.acceleration[0])
+yO = -(imu.acceleration[1])
+zO = -(imu.acceleration[2])
 print (xO, yO, zO)
 sleep(delay)
 
 while True:
-    x += (imu.acceleration[0] + xO)*delay
-    y += (imu.acceleration[1] + yO)*delay
-    z += (imu.acceleration[2] + zO)*delay
+    x += round(imu.acceleration[0] + xO ,2)*delay
+    y += round(imu.acceleration[1] + yO ,2)*delay
+    z += round(imu.acceleration[2] + zO ,2)*delay
     print(f"X: {x} Y: {y} Z: {z}")
     sleep(delay)
