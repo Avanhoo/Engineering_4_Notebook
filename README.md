@@ -298,9 +298,29 @@ Write your assignment description here. What is the purpose of this assignment? 
     
 </details>
 
-**Part II:**
+<details>
+<summary><b>Part II</b></summary>
+    
+<p>
+    
+```
 
-**Part III:**
+```
+</p>  
+    
+</details>
+
+<details>
+<summary><b>Part III</b></summary>
+    
+<p>
+    
+```
+
+```
+</p>  
+    
+</details>
 
 ### Reflection
 
