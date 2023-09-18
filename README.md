@@ -262,6 +262,56 @@ Ironically the servo was the easiest part of this whole assignment. We used the 
 
 
 
+## Crash Avoidance
+
+### Assignment Description
+
+Write your assignment description here. What is the purpose of this assignment? It should be at least a few sentences.
+
+### Evidence 
+
+**Part I:**
+
+**Part II:**
+
+**Part III:**
+
+### Wiring
+
+**Part I:**
+
+**Part II:**
+
+**Part III:**
+
+### Code
+
+<details>
+<summary><b>Part I</b></summary>
+    
+<p>
+    
+```
+
+```
+</p>  
+    
+</details>
+
+**Part II:**
+
+**Part III:**
+
+### Reflection
+
+**Part I:**
+
+**Part II:**
+
+**Part III:**
+
+What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
+
 # Templates
 
 ## Raspberry_Pi_Assignment_Template
@@ -280,6 +330,18 @@ This may not be applicable to all assignments. Anything where you wire something
 
 ### Code
 Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```
+
+```
+</p>  
+    
+</details>
 
 ### Reflection
 

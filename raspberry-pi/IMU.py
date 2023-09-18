@@ -26,8 +26,8 @@ print (xO, yO, zO)
 sleep(delay)
 
 while True:
-    x += round(imu.acceleration[0] + xO ,2)*delay
-    y += round(imu.acceleration[1] + yO ,2)*delay
-    z += round(imu.acceleration[2] + zO ,2)*delay
+    x += round(imu.acceleration[0] + xO ,1)*delay
+    y += round(imu.acceleration[1] + yO ,1)*delay
+    z += round(imu.acceleration[2] + zO ,1)*delay
     print(f"X: {x} Y: {y} Z: {z}")
     sleep(delay)
