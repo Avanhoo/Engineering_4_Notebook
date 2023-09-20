@@ -273,6 +273,8 @@ We need to make a system using an IMU that displays angular data on a little OLE
 
 **Part I:**
 
+![gyro_1_vid](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/c8cdfe38-a2d1-4359-9298-5684fe0bc824)
+
 **Part II:**
 
 **Part III:**
