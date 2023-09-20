@@ -4,6 +4,7 @@
 
 ## Table of Contents
 * [Launchpad](#launchpad)
+* [Gyroscope](#Crash_Avoidance)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 * [Onshape_Assignment_Template](#onshape_assignment_template)
 
@@ -279,6 +280,8 @@ Write your assignment description here. What is the purpose of this assignment? 
 ### Wiring
 
 **Part I:**
+
+![Gyro_1](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/eac6b7ca-f805-4ee6-92fa-efcd658d93de)
 
 **Part II:**
 
