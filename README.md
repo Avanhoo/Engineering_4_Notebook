@@ -277,6 +277,8 @@ We need to make a system using an IMU that displays angular data on a little OLE
 
 **Part II:**
 
+![Look at the buffoon dance](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/8f8c0cf4-8fcd-43dc-b8a7-4cd68fa62980)
+
 **Part III:**
 
 ### Wiring
@@ -286,6 +288,8 @@ We need to make a system using an IMU that displays angular data on a little OLE
 ![Gyro_1](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/eac6b7ca-f805-4ee6-92fa-efcd658d93de)
 
 **Part II:**
+
+![Gyro_2](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/bbb2185f-89a7-42c4-b125-2aba24506d8c)
 
 **Part III:**
 
@@ -330,6 +334,33 @@ while True:
 <p>
     
 ```python
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+from time import sleep
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+i2c = busio.I2C(scl_pin, sda_pin)
+imu = adafruit_mpu6050.MPU6050(i2c)
+x = 0
+y = 0
+z = 0
+
+delay = .1
+
+sleep(delay)
+
+while True:
+    print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}")
+    if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
+        led.value = True
+    else:
+        led.value = False
+    sleep(delay)
 
 ```
 </p>  
@@ -355,6 +386,8 @@ while True:
 I had used an IMU before for a previous assignment, but only for the rotation values. I thought I knew what I was doing but I was thinking of the accelerometer as a velocometer. I didn't realize that gravity existed because I was thinking that I was measuring the change in position and the IMU wasn't moving, but I was measuring the change in velocity, so gravity *did* exist.
 
 **Part II:**
+
+We used the IMU's acceleration value to do the list detection here instead of the angular gyroscope data it gives us, which turned out to be easier as you can use gravity as a reference. This means that the angle value will never drift and you don't have to worry too much about calibration. You just see if the x or y acceleration axes ever have an acceleration around 9.8 (gravity). 
 
 **Part III:**
 
