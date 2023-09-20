@@ -4,7 +4,7 @@
 
 ## Table of Contents
 * [Launchpad](#launchpad)
-* [Gyroscope](#crash-avoidance)
+* [IMU](#crash-avoidance)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 * [Onshape_Assignment_Template](#onshape_assignment_template)
 
