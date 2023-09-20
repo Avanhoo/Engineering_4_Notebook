@@ -267,7 +267,7 @@ Ironically the servo was the easiest part of this whole assignment. We used the 
 
 ### Assignment Description
 
-Write your assignment description here. What is the purpose of this assignment? It should be at least a few sentences.
+We need to make a system using an IMU that displays angular data on a little OLED screen and flashes a light if the device is tilted more than 90°.
 
 ### Evidence 
 
@@ -349,6 +349,8 @@ while True:
 ### Reflection
 
 **Part I:**
+
+I had used an IMU before for a previous assignment, but only for the rotation values. I thought I knew what I was doing but I was thinking of the accelerometer as a velocometer. I didn't realize that gravity existed because I was thinking that I was measuring the change in position and the IMU wasn't moving, but I was measuring the change in velocity, so gravity *did* exist.
 
 **Part II:**
 
