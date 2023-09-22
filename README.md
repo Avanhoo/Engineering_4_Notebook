@@ -446,7 +446,7 @@ We used the IMU's acceleration value to do the list detection here instead of th
 
 **Part III:**
 
-Adding a screen definitely made the wiring a mess. Code wise I had an issue because I forgot to put the displayio.release_displays() command at the start of my code, which essentially releases the GPIO i2c pins (as the name entails). After that got fixed it worked well, though I had to manually find the i2c adresses of the screen and imu this time, code below.
+Adding a screen definitely made the wiring a mess. Code wise I had an issue because I forgot to put the displayio.release_displays() command at the start of my code, which essentially releases the GPIO i2c pins (as the name entails). After that got fixed it worked well, though I had to manually find the i2c adresses of the screen and imu this time, code below (credit to Mr. Miller).
 <details>
 <summary><b>Click to Show</b></summary>
     
