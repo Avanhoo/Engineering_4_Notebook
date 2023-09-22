@@ -293,6 +293,8 @@ We need to make a system using an IMU that displays angular data on a little OLE
 
 **Part III:**
 
+![Gyro_3](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/63233c34-0b0c-46d4-a388-86f5b1bf732c)
+
 ### Code
 
 <details>
@@ -374,6 +376,59 @@ while True:
     
 ```python
 
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+import terminalio
+import displayio
+from time import sleep
+import adafruit_displayio_ssd1306
+from adafruit_display_text import label
+displayio.release_displays()
+
+
+i2c = busio.I2C(board.GP17, board.GP16)
+display_bus = displayio.I2CDisplay(i2c, device_address=0x3d, reset=board.GP20) # Display
+display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=128, height=64)
+imu = adafruit_mpu6050.MPU6050(i2c, address=0x68) # Accelerometer
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+
+x = 0
+y = 0
+z = 0
+delay = .1
+
+sleep(delay)
+
+while True:
+    print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}")
+    if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3 or (imu.acceleration[2] < 0):
+        led.value = True
+    else:
+        led.value = False
+
+    # create the display group
+    splash = displayio.Group()
+
+    # add title block to display group
+    title = f"ANGULAR VELOCITY: \n X:{round(imu.gyro[0]-.6,3)} \n Y:{round(imu.gyro[1]+.2,3)} \n Z:{round(imu.gyro[2],3)}"
+    # the order of this command is (font, text, text color, and location)
+    text_area = label.Label(terminalio.FONT, text=title, color=0xFFFF00, x=5, y=5)
+    splash.append(text_area)    
+
+    # you will write more code here that prints the x, y, and z angular velocity values to the screen below the title. Use f strings!
+    # Don't forget to round the angular velocity values to three decimal places
+
+    # send display group to screen
+    display.show(splash)
+
+    sleep(delay)
+
 ```
 </p>  
     
@@ -391,7 +446,41 @@ We used the IMU's acceleration value to do the list detection here instead of th
 
 **Part III:**
 
-What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
+Adding a screen definitely made the wiring a mess. Code wise I had an issue because I forgot to put the displayio.release_displays() command at the start of my code, which essentially releases the GPIO i2c pins (as the name entails). After that got fixed it worked well, though I had to manually find the i2c adresses of the screen and imu this time, code below.
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+import board
+import time
+import busio
+
+
+sda_pin = board.GP4
+scl_pin = board.GP5
+i2c = busio.I2C(scl_pin, sda_pin)
+
+while not i2c.try_lock():
+    pass
+
+try:
+    while True:
+        print(
+            "I2C addresses found:",
+            [hex(device_address) for device_address in i2c.scan()],
+        )
+        time.sleep(2)
+
+finally:  # unlock the i2c bus when ctrl-c'ing out of the loop
+    i2c.unlock()
+
+```
+</p>  
+    
+</details>
 
 # Templates
 
