@@ -281,7 +281,7 @@ We need to make a system using an IMU that displays angular data on a little OLE
 
 **Part III:**
 
-![This file was smaller as a video](images/ezgif.com-optimize (5).gif)
+![This file was smaller as a video](images/imu_3.gif)
 
 ### Wiring
 
