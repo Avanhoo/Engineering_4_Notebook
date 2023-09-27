@@ -3,8 +3,8 @@ import time
 import busio
 
 
-sda_pin = board.GP4
-scl_pin = board.GP5
+sda_pin = board.GP16
+scl_pin = board.GP17
 i2c = busio.I2C(scl_pin, sda_pin)
 
 while not i2c.try_lock():
