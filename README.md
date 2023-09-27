@@ -284,6 +284,10 @@ For the spicy section we need to use an altimeter to have the warning light turn
 
 ![This file was smaller as a video](images/imu_3.gif)
 
+**Spicy**
+
+![Gyro_S](images/imu_4.gif)
+
 ### Wiring
 
 **Part I:**
