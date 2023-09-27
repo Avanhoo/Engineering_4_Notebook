@@ -304,7 +304,7 @@ For the spicy section we need to use an altimeter to have the warning light turn
 
 **Spicy**
 
-![Gyro_S](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/fad911ad-6caf-4cee-b19b-25a0a50c8232)
+![Gyro_S](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/55e85db1-ce88-470a-b6aa-9667b6bc5e94)
 
 ### Code
 
