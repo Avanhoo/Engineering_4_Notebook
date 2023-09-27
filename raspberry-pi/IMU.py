@@ -15,7 +15,7 @@ i2c = busio.I2C(board.GP17, board.GP16)
 display_bus = displayio.I2CDisplay(i2c, device_address=0x3d, reset=board.GP20) # Display
 display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=128, height=64)
 imu = adafruit_mpu6050.MPU6050(i2c, address=0x68) # Accelerometer
-sensor = adafruit_mpl3115a2.MPL3115A2(i2c)
+sensor = adafruit_mpl3115a2.MPL3115A2(i2c) # Altimeter
 #sensor.sealevel_pressure = 1017
 
 
@@ -23,7 +23,7 @@ led = digitalio.DigitalInOut(board.GP3)
 led.direction = digitalio.Direction.OUTPUT
 
 delay = .1
-baseAlt = sensor.altitude
+baseAlt = sensor.altitude # base altitude your current position is measured against
 Height = 0
 
 sleep(delay)
