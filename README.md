@@ -551,6 +551,66 @@ finally:  # unlock the i2c bus when ctrl-c'ing out of the loop
 
 I kinda lika da spicy. I'd been wanting to use a sensor like this for a personal project so this was a great learning opportunity.  The sensor can give temperature and pressure, the latter of which can be used to calculate altitude. It's a normal i2c board so getting it up and running is very easy, though it needs thorough calibration to give proper readings, so I just used it to give me the relative difference in altitude for this project by subtracting the current altitude from a set "base" altitude. This is one of the best use cases for a pressure-based altitude sensor like this, as the reading varies based on weather, season, and even if you blow on the sensor.
 
+
+
+
+
+
+# Onshape
+
+## Beam Design (FEA 1)
+
+### Assignment Description
+
+In this assignment we have to create a beam supported on one end that can hold weight on the other (180cm long). The beam must weigh less than 13g and will be printed out of 100% infill PLA. Our design can't feature overhangs <45°, and the beam fails once it snaps or bends >35cm
+### Part Link 
+
+[Create a link to your Onshape document]([https://cvilleschools.onshape.com/documents/003e413cee57f7ccccaa15c2/w/ea71050bb283bf3bf088c96c/e/c85ae532263d3b551e1795d0?renderMode=0&uiState=62d9b9d7883c4f335ec42021](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/ee044e03919576f44710a8b6?renderMode=0&uiState=651d6a0766bcfe34cbaa30f0))
+
+### Part Image
+
+![Afton Final](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/ea52d39f-3e4d-4a5a-82c9-0394b2e99c8e)
+![Afton Final (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/05fb62a1-1494-4802-ba46-4959a35e0dc3)
+
+### Reflection
+
+The design constraints we were given for this challenge were hard. The base block of the beam weighs ~5g to begin with, so you effectively have 8g of material to use. This type of beam is called a cantilever beam, and there is a bit of information online on how to design one. The only problem is that all of the designs I could find had a slight tapering on the underside of the beam as it extended out, which we can't print as it would make the whole beam an overhang. So I had to use this idea of the beam getting smaller towards the end in a different manner. I decided to make it shrink down in height on the top so that the end would still be lighter, but the bottom was flat and printable. My design is a very simple idea, with my reasoning being that you need a strong section on both the bottom and top of the beam. The bottom part will hold the compression of the whole beam as it bends downwards, the top part would would help control the tension created on the top of the beam as it bends downwards. I was scared that it would fail at the point where it attaches to the holding block, so I added some small supports to help distribute the load (at least that was the idea). This whole thing took an iteration or 2, but I found the loft tool to be helpful for my design (though you can't loft a sketch with a hollow center, so you need to use 2)., me, or your college admission committee!
+
+&nbsp;
+
+## Media Test
+
+Your readme will have various images and gifs on it. Upload a test image and test gif to make sure you've got the process figured out. Pick whatever image and gif you want!
+
+### Test Link
+[Hyperlink Text](https://en.wikipedia.org/wiki/Ural_Mountains)      
+
+### Test Image
+
+![Forest around mount Yamantau](images/Лес_вокруг_г.Ямантау.jpg)
+
+### Test GIF
+
+![Crying emoji evaporates](images/crying-emoji-dies.gif)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Templates
 
 ## Raspberry_Pi_Assignment_Template
