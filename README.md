@@ -5,8 +5,9 @@
 ## Table of Contents
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
+* [Beam Design](#beam_design_(fea_1))
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
-* [Beam Design](beam_design_(fea_1))
+
 
 
 &nbsp;
