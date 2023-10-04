@@ -5,7 +5,7 @@
 ## Table of Contents
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
-* [Beam Design]((https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/README.md#beam-design-fea-1))
+* [Beam Design](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/README.md#beam-design-fea-1)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
