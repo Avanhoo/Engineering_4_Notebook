@@ -6,7 +6,7 @@
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
-* [Onshape_Assignment_Template](#onshape_assignment_template)
+* [Beam Design](beam_design_(fea_1))
 
 
 &nbsp;
@@ -569,8 +569,8 @@ In this assignment we have to create a beam supported on one end that can hold w
 
 ### Part Image
 
-![Afton Final](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/ea52d39f-3e4d-4a5a-82c9-0394b2e99c8e)
-![Afton Final (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/05fb62a1-1494-4802-ba46-4959a35e0dc3)
+![Afton Final](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/6d3b4032-9374-4efa-93fe-f57a97636bd7)
+![Afton Final (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/0f3b8bf1-6db1-4b09-9d50-988b8b6535c0)
 
 ### Reflection
 
