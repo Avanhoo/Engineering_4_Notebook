@@ -581,20 +581,34 @@ I decided to make it shrink down in height on the top so that the end would stil
 
 &nbsp;
 
-## Media Test
 
-Your readme will have various images and gifs on it. Upload a test image and test gif to make sure you've got the process figured out. Pick whatever image and gif you want!
+## FEA Part 4
 
-### Test Link
-[Hyperlink Text](https://en.wikipedia.org/wiki/Ural_Mountains)      
+### Assignment Description
 
-### Test Image
+This is the iterative design phase, where we use Onshape simulations to find weaknesses in our designs and improve them.
+### Part Link 
 
-![Forest around mount Yamantau](images/Лес_вокруг_г.Ямантау.jpg)
+[Onshape Document]([https://cvilleschools.onshape.com/documents/003e413cee57f7ccccaa15c2/w/ea71050bb283bf3bf088c96c/e/c85ae532263d3b551e1795d0?renderMode=0&uiState=62d9b9d7883c4f335ec42021](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)).
 
-### Test GIF
+The goblet / 𝛙(psi) beam
+![Goblet](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/1dea0961-8fc8-444d-a727-18f4146a9d4d)
 
-![Crying emoji evaporates](images/crying-emoji-dies.gif)
+
+
+### Reflection
+
+The original "lowercase i beam" design was relatively strong but it had quite a lot of stress along the top of the beam. 
+![Old](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/91022632-27e8-4f47-86b0-a0aa97a1e9af)
+(Stress is 4lbf in all pictures shown)
+
+To try and reduce this I added supports on the sides of the top circle to try and gold some of the weight. This worked well at lowering the top stress to manageable levels, but the pressure was now concentrated at the base of the beam. 
+![improve](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/601b4bc5-061d-4d29-9d17-27219209dce5)
+
+I changed the "shrink factor" which made the end of the beam smaller to reduce weight as the middle and end of the beam don't have to bear much load and therefore shouldn't weigh much. This allowed me the extra material to fillet the base of the beam, which drastically improved the pressure, though there are still "hotspots" that have high stress.
+![New](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/894ee2bd-8b38-4a8f-b8aa-c6d2e3f174ff)
+
+&nbsp;
 
 
 
@@ -672,6 +686,22 @@ Take a nice screenshot of your Onshape document.
 What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
 
 &nbsp;
+
+## Media Test
+
+Your readme will have various images and gifs on it. Upload a test image and test gif to make sure you've got the process figured out. Pick whatever image and gif you want!
+
+### Test Link
+[Hyperlink Text](https://en.wikipedia.org/wiki/Ural_Mountains)      
+
+### Test Image
+
+![Forest around mount Yamantau](images/Лес_вокруг_г.Ямантау.jpg)
+
+### Test GIF
+
+![Crying emoji evaporates](images/crying-emoji-dies.gif)
+
 
 ## Media Test
 
