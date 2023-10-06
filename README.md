@@ -6,6 +6,7 @@
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
 * [Beam Design](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/README.md#beam-design-fea-1)
+* [Beam Iteration](#fea-part-4)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
@@ -589,9 +590,10 @@ I decided to make it shrink down in height on the top so that the end would stil
 This is the iterative design phase, where we use Onshape simulations to find weaknesses in our designs and improve them.
 ### Part Link 
 
-[Onshape Document]([https://cvilleschools.onshape.com/documents/003e413cee57f7ccccaa15c2/w/ea71050bb283bf3bf088c96c/e/c85ae532263d3b551e1795d0?renderMode=0&uiState=62d9b9d7883c4f335ec42021](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)).
+[Onshape Document](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)
 
 The goblet / 𝛙(psi) beam
+%nbsp;
 ![Goblet](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/1dea0961-8fc8-444d-a727-18f4146a9d4d)
 
 
@@ -602,7 +604,7 @@ The original "lowercase i beam" design was relatively strong but it had quite a 
 ![Old](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/91022632-27e8-4f47-86b0-a0aa97a1e9af)
 (Stress is 4lbf in all pictures shown)
 
-To try and reduce this I added supports on the sides of the top circle to try and gold some of the weight. This worked well at lowering the top stress to manageable levels, but the pressure was now concentrated at the base of the beam. 
+To try and reduce this I added supports on the sides of the top circle to try and hold some of the weight. This worked well at lowering the top stress to manageable levels, but the pressure was now concentrated at the base of the beam. 
 ![improve](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/601b4bc5-061d-4d29-9d17-27219209dce5)
 
 I changed the "shrink factor" which made the end of the beam smaller to reduce weight as the middle and end of the beam don't have to bear much load and therefore shouldn't weigh much. This allowed me the extra material to fillet the base of the beam, which drastically improved the pressure, though there are still "hotspots" that have high stress.
