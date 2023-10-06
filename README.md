@@ -593,7 +593,7 @@ This is the iterative design phase, where we use Onshape simulations to find wea
 [Onshape Document](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)
 
 The goblet / 𝛙(psi) beam
-%nbsp;
+
 ![Goblet](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/1dea0961-8fc8-444d-a727-18f4146a9d4d)
 
 
