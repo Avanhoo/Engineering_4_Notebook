@@ -607,7 +607,7 @@ The original "lowercase i beam" design was relatively strong but it had quite a 
 To try and reduce this I added supports on the sides of the top circle to try and hold some of the weight. This worked well at lowering the top stress to manageable levels, but the pressure was now concentrated at the base of the beam. 
 ![improve](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/601b4bc5-061d-4d29-9d17-27219209dce5)
 
-I changed the "shrink factor" which made the end of the beam smaller to reduce weight as the middle and end of the beam don't have to bear much load and therefore shouldn't weigh much. This allowed me the extra material to fillet the base of the beam, which drastically improved the pressure, though there are still "hotspots" that have high stress.
+I changed the "shrink factor" which made the end of the beam smaller to reduce weight as the middle and end of the beam don't have to bear much load and therefore shouldn't weigh much. This allowed me the extra material to fillet the base of the beam, which drastically improved the pressure, though there are still "hotspots" that have high stress.         (↓ in MPa)
 ![New](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/894ee2bd-8b38-4a8f-b8aa-c6d2e3f174ff)
 
 &nbsp;
