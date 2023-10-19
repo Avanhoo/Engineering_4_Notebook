@@ -5,8 +5,9 @@
 ## Table of Contents
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
-* [Beam Design](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/README.md#beam-design-fea-1)
-* [Beam Iteration](#fea-part-4)
+* [FEA Part 1](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/README.md#beam-design-fea-1)
+* [FEA Part 2](#fea-part-2)
+* [FEA Part 3](#fea-part-3)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
@@ -584,7 +585,7 @@ I decided to make it shrink down in height on the top so that the end would stil
 
 
 
-## FEA Part 3
+## FEA Part 2
 
 ### Assignment Description
 
@@ -605,7 +606,7 @@ Me and Nick had 2 separate designs for our beams, but we decided to go with mine
 
 
 
-## FEA Part 4
+## Beam Iteration (FEA 3)
 
 ### Assignment Description
 
