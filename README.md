@@ -583,6 +583,28 @@ I decided to make it shrink down in height on the top so that the end would stil
 &nbsp;
 
 
+
+## FEA Part 3
+
+### Assignment Description
+
+Render and analyze force and deflection plots of your beam and think how to improve your design.
+
+### Part Link 
+
+[Onshape Document](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)
+
+### Part Image
+
+![273233689-d2153ce2-1e13-4d53-81cb-47b457737f58](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/ba88b0bb-dad4-497b-9ac8-c7a8b2dfb84b)
+![273233701-79a6c5ea-4d05-41b5-95b8-409da07e9aa4](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2ff2f48b-3a9e-4497-b1dc-5382f78ab6f3)
+
+### Reflection
+
+Me and Nick had 2 separate designs for our beams, but we decided to go with mine as Nick's broke the rules and couldn't even render. I designed this one from the start with a "shrink factor", which is a number where sf > 1 which governs how much the end of the part is scaled down compared to the base. I used a loft to connect the start and end, so that I can change the beam at any point through a single variable. The stress on the beam was concentrated at the base, so I'd like to reinforce it with filleted edges, and by lowering the shrink factor, as the end of the beam doesn't have much stress on it. This will allow me some extra material to further reinforce the base and add some extra supports to the top which go down the length of the beam, which has a lot of stress on it.
+
+
+
 ## FEA Part 4
 
 ### Assignment Description
