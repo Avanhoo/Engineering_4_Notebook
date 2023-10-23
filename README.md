@@ -8,6 +8,7 @@
 * [FEA Part 1](#beam-design-fea-1)
 * [FEA Part 2](#fea-part-2)
 * [FEA Part 3](#beam-iteration-fea-3)
+* [Landing Area Part 1](#landing=area=1)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
@@ -635,7 +636,74 @@ I changed the "shrink factor" which made the end of the beam smaller to reduce w
 
 &nbsp;
 
+## Landing Pad 1
 
+### Assignment Description
+
+Create a program that calculates the area of a triangle based on 3 input coordinates. It must use a function and take coordinates in an x,y format.
+### Evidence 
+
+![coordinates_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/66d68321-f92c-436d-898e-0eb6e734dc82)
+
+### Code
+
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+# Triangle Are Solver - Afton Van Hooser
+from time import sleep
+
+x = 0
+y = 1
+
+def area(r1,r2,r3):
+    c1 = [0,0]
+    c2 = [0,0]
+    c3 = [0,0]
+    try:                    # Coordinate 1
+        c1 = [int(o) for o in r1.split(",")] # Splits raw string: "1,2" into a string array: "1", "2", and turns each value into an int: 1,2
+    except:
+        print("Coordinate 1 Invalid, please enter in 'x,y' format")
+        pass
+    finally:
+
+        try:                # Coordinate 2
+            c2 = [int(o) for o in r2.split(",")]
+        except:
+            print("Coordinate 2 Invalid, please enter in 'x,y' format")
+            pass
+        finally:
+
+            try:            # Coordinate 3
+                c3 = [int(o) for o in r3.split(",")]
+            except:
+                print("Coordinate 3 Invalid, please enter in 'x,y' format")
+                pass
+            finally:
+                A = (1/2)*abs(c1[x]*(c2[y] - c3[y]) + c2[x]*(c3[y] - c1[y]) + c3[x]*(c1[y] - c2[y])) # Easy plug and play equation for a triangle's area
+                return A
+
+
+while True:
+    r1 = input("Coordinate 1: ")
+    r2 = input("Coordinate 2: ")
+    r3 = input("Coordinate 3: ")
+    print(area(r1,r2,r3))
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+The biggest challenge in this assignment was turning the raw coordinate input into usable numbers. At first I tried to do some intricate parsing of the input to check if it was valid and split it along the comma. I realized, though, that I could just use a try statement, which I could make run different paths depending on if the code worked properly or not. I then used some fancy operators to split the coordinates and turn them into integers in one line. To be honest I thought that the math for finding the area of the triangle, but thankfully River saved me from going down a pythagorean theory rabbit hole, and showed me a single equation that does some magic to spit out the area of any triangle.
+
+&nbsp;
 
 
 
