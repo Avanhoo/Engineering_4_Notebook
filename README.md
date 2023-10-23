@@ -5,8 +5,11 @@
 ## Table of Contents
 * [Launchpad](#launchpad)
 * [IMU](#crash-avoidance)
+* [FEA Part 1](#beam-design-fea-1)
+* [FEA Part 2](#fea-part-2)
+* [FEA Part 3](#beam-iteration-fea-3)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
-* [Onshape_Assignment_Template](#onshape_assignment_template)
+
 
 
 &nbsp;
@@ -250,10 +253,10 @@ while True:
 ### Reflection
 
 **Part I:**
-This was a very simple start, but I made sure to use a for loop to make the countdown as simple as possible.
+This was a very simple start, but I made sure to use a for loop to make the countdown as simple as possible. J'ai oublier que j'ai besoin d'importre le bibliothèque "temps", et parce que de la j'etais confus sur pourquoi mon code etait non fonctionnel. Ne oublier pas votre bibliothèques!
 
 **Part II:**
-I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wrong pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple.
+I had a bit of difficulty in getting the lights to turn on, which I realize was because I had the wrong pins. Since they aren't labled on the Pico I plugged one LED into ground and the other into pin 2 instead of 4, but after I fixed that it was pretty simple
 
 **Part III:**
 The button gave me more trouble than it should have. This was due to confusion surrounding the pull up/down built into the pico. If you're pulling DOWN you need one 3.3V wire connected to the button and the other to your pin. If you're pulling UP you need a ground wire to the button and the other to your pin. I was doing the wrong direction of pull for my wiring as I didn't understand the difference between pull up and pull down.
@@ -304,7 +307,7 @@ For the spicy section we need to use an altimeter to have the warning light turn
 
 **Spicy**
 
-![Gyro_S](images/imu_4.gif)
+![Gyro_S](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/6b55ffa2-f0d4-4c28-a2d7-49bb55a2d2f4)
 
 ### Code
 
@@ -458,7 +461,7 @@ i2c = busio.I2C(board.GP17, board.GP16)
 display_bus = displayio.I2CDisplay(i2c, device_address=0x3d, reset=board.GP20) # Display
 display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=128, height=64)
 imu = adafruit_mpu6050.MPU6050(i2c, address=0x68) # Accelerometer
-sensor = adafruit_mpl3115a2.MPL3115A2(i2c)
+sensor = adafruit_mpl3115a2.MPL3115A2(i2c) # Altimeter
 #sensor.sealevel_pressure = 1017
 
 
@@ -466,14 +469,14 @@ led = digitalio.DigitalInOut(board.GP3)
 led.direction = digitalio.Direction.OUTPUT
 
 delay = .1
-baseAlt = sensor.altitude
+baseAlt = sensor.altitude # base altitude your current position is measured against
 Height = 0
 
 sleep(delay)
 
 while True:
     altitude = sensor.altitude
-    if (baseAlt + 3 < altitude):
+    if (baseAlt + 3 < altitude): # Checks if you're 3m above the starting point
         Height = 1
     else:
         Height = 0
@@ -551,6 +554,105 @@ finally:  # unlock the i2c bus when ctrl-c'ing out of the loop
 
 I kinda lika da spicy. I'd been wanting to use a sensor like this for a personal project so this was a great learning opportunity.  The sensor can give temperature and pressure, the latter of which can be used to calculate altitude. It's a normal i2c board so getting it up and running is very easy, though it needs thorough calibration to give proper readings, so I just used it to give me the relative difference in altitude for this project by subtracting the current altitude from a set "base" altitude. This is one of the best use cases for a pressure-based altitude sensor like this, as the reading varies based on weather, season, and even if you blow on the sensor.
 
+
+
+
+
+
+# Onshape
+
+## Beam Design (FEA 1)
+
+### Assignment Description
+
+In this assignment we have to create a beam supported on one end that can hold weight on the other (180cm long). The beam must weigh less than 13g and will be printed out of 100% infill PLA. Our design can't feature overhangs <45°, and the beam fails once it snaps or bends >35cm
+### Part Link 
+
+[Create a link to your Onshape document]([https://cvilleschools.onshape.com/documents/003e413cee57f7ccccaa15c2/w/ea71050bb283bf3bf088c96c/e/c85ae532263d3b551e1795d0?renderMode=0&uiState=62d9b9d7883c4f335ec42021](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/ee044e03919576f44710a8b6?renderMode=0&uiState=651d6a0766bcfe34cbaa30f0))
+
+### Part Image
+
+![Afton Final](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/6d3b4032-9374-4efa-93fe-f57a97636bd7)
+![Afton Final (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/0f3b8bf1-6db1-4b09-9d50-988b8b6535c0)
+
+### Reflection
+
+The design constraints we were given for this challenge were hard. The base block of the beam weighs ~5g to begin with, so you effectively have 8g of material to use. This type of beam is called a cantilever beam, and there is a bit of information online on how to design one. The only problem is that all of the designs I could find had a slight tapering on the underside of the beam as it extended out, which we can't print as it would make the whole beam an overhang. So I had to use this idea of the beam getting smaller towards the end in a different manner. 
+
+I decided to make it shrink down in height on the top so that the end would still be lighter, but the bottom was flat and printable. My design is a very simple idea, with my reasoning being that you need a strong section on both the bottom and top of the beam. The bottom part will hold the compression of the whole beam as it bends downwards, the top part would would help control the tension created on the top of the beam as it bends downwards. The middle support is intended to prevent it from folding in half, and I was scared that it would fail at the point where it attaches to the holding block, so I added some small supports to help distribute the load (at least that was the idea). This whole thing took an iteration or 2, but I found the loft tool to be helpful for my design (though you can't loft a sketch with a hollow center, so you need to use 2)., me, or your college admission committee!
+
+&nbsp;
+
+
+
+## FEA Part 2
+
+### Assignment Description
+
+Render and analyze force and deflection plots of your beam and think how to improve your design.
+
+### Part Link 
+
+[Onshape Document](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)
+
+### Part Image
+
+![273233689-d2153ce2-1e13-4d53-81cb-47b457737f58](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/ba88b0bb-dad4-497b-9ac8-c7a8b2dfb84b)
+![273233701-79a6c5ea-4d05-41b5-95b8-409da07e9aa4](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2ff2f48b-3a9e-4497-b1dc-5382f78ab6f3)
+
+### Reflection
+
+Me and Nick had 2 separate designs for our beams, but we decided to go with mine as Nick's broke the rules and couldn't even render. I designed this one from the start with a "shrink factor", which is a number where sf > 1 which governs how much the end of the part is scaled down compared to the base. I used a loft to connect the start and end, so that I can change the beam at any point through a single variable. The stress on the beam was concentrated at the base, so I'd like to reinforce it with filleted edges, and by lowering the shrink factor, as the end of the beam doesn't have much stress on it. This will allow me some extra material to further reinforce the base and add some extra supports to the top which go down the length of the beam, which has a lot of stress on it.
+
+
+
+## Beam Iteration (FEA 3)
+
+### Assignment Description
+
+This is the iterative design phase, where we use Onshape simulations to find weaknesses in our designs and improve them.
+### Part Link 
+
+[Onshape Document](https://cvilleschools.onshape.com/documents/8bb0d31d162d28dc9f991ea0/w/fe1197780904e4d1d1386b24/e/18919759dab88ab0bac8a0ae)
+
+The goblet / 𝛙(psi) beam
+
+![Goblet](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/1dea0961-8fc8-444d-a727-18f4146a9d4d)
+
+
+
+### Reflection
+
+The original "lowercase i beam" design was relatively strong but it had quite a lot of stress along the top of the beam. 
+![Old](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/91022632-27e8-4f47-86b0-a0aa97a1e9af)
+(Stress is 4lbf in all pictures shown)
+
+To try and reduce this I added supports on the sides of the top circle to try and hold some of the weight. This worked well at lowering the top stress to manageable levels, but the pressure was now concentrated at the base of the beam. 
+![improve](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/601b4bc5-061d-4d29-9d17-27219209dce5)
+
+I changed the "shrink factor" which made the end of the beam smaller to reduce weight as the middle and end of the beam don't have to bear much load and therefore shouldn't weigh much. This allowed me the extra material to fillet the base of the beam, which drastically improved the pressure, though there are still "hotspots" that have high stress.         (↓ in MPa)
+![New](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/894ee2bd-8b38-4a8f-b8aa-c6d2e3f174ff)
+
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Templates
 
 ## Raspberry_Pi_Assignment_Template
@@ -609,6 +711,22 @@ Take a nice screenshot of your Onshape document.
 What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
 
 &nbsp;
+
+## Media Test
+
+Your readme will have various images and gifs on it. Upload a test image and test gif to make sure you've got the process figured out. Pick whatever image and gif you want!
+
+### Test Link
+[Hyperlink Text](https://en.wikipedia.org/wiki/Ural_Mountains)      
+
+### Test Image
+
+![Forest around mount Yamantau](images/Лес_вокруг_г.Ямантау.jpg)
+
+### Test GIF
+
+![Crying emoji evaporates](images/crying-emoji-dies.gif)
+
 
 ## Media Test
 
