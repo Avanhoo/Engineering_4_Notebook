@@ -8,7 +8,7 @@
 * [FEA Part 1](#beam-design-fea-1)
 * [FEA Part 2](#fea-part-2)
 * [FEA Part 3](#beam-iteration-fea-3)
-* [Landing Area Part 1](#landing=area=1)
+* [Landing Area Part 1](#landing-area-1)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
@@ -636,7 +636,7 @@ I changed the "shrink factor" which made the end of the beam smaller to reduce w
 
 &nbsp;
 
-## Landing Pad 1
+## Landing Area 1
 
 ### Assignment Description
 
