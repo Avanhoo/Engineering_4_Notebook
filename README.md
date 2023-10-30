@@ -9,6 +9,7 @@
 * [FEA Part 2](#fea-part-2)
 * [FEA Part 3](#beam-iteration-fea-3)
 * [Landing Area Part 1](#landing-area-1)
+* [Landing Area Part 2](#landing-area-2)
 * [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
 
 
@@ -703,7 +704,41 @@ while True:
 
 The biggest challenge in this assignment was turning the raw coordinate input into usable numbers. At first I tried to do some intricate parsing of the input to check if it was valid and split it along the comma. I realized, though, that I could just use a try statement, which I could make run different paths depending on if the code worked properly or not. I then used some fancy operators to split the coordinates and turn them into integers in one line. To be honest I thought that the math for finding the area of the triangle, but thankfully River saved me from going down a pythagorean theory rabbit hole, and showed me a single equation that does some magic to spit out the area of any triangle.
 
-&nbsp;
+
+
+
+## Landing Area 2
+
+### Assignment Description
+
+Graph the landing area on an OLED screen.
+
+### Evidence 
+
+Pictures / Gifs of your work should go here. You need to communicate what your thing does. 
+
+### Wiring
+
+![la2](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/e1d2d3ab-3cd8-428e-aeab-92ef1897f2a7)
+
+### Code
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+I used the OLED code from the previous assignment to print out the text, but I turned it into a function qdisp(). This made it much less cluttered in my area function. Graphing the landing area was the main part, though. There are libraries built to draw lines and shapes for you, with 
+
 
 
 
