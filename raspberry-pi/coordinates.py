@@ -28,22 +28,37 @@ def qdisp(title): # Stands for quick display. Creates a function that runs all t
     splash.append(text_area)    
     display.show(splash)# send display group to screen
 
-def qgraph(c1,c2,c3):
+def qgraph(c1,c2,c3,A):
     scale = 1
     x0 = 64
     y0 = 32
     splash = displayio.Group()
 
+    for i in range (1,5):
+        scale = i
+        if (abs(c1[x])*scale > 60) or (abs(c2[x])*scale > 60) or (abs(c3[x])*scale > 60):
+            scale = i-1
+            break
+
+        elif (abs(c1[y])*scale > 30) or (abs(c2[y])*scale > 30) or (abs(c3[y])*scale > 30):
+            scale = i-1
+            break
+
+
     hline = Line(0,y0,128,y0, color=0xFFFF00)
     vline = Line(x0,0,x0,64, color=0xFFFF00)
+    circle = Circle(x0, y0, 2, outline=0xFFFF00)
+    text = label.Label(terminalio.FONT, text=f"A={A}\n\n\n{scale}x", color=0xFFFF00, x=5, y=5)
     splash.append(hline) 
     splash.append(vline)
+    splash.append(circle)
+    splash.append(text)
 
-    triangle = Triangle((c1[x]+x0)*scale, (c1[y]+y0)*scale, (c2[x]+x0)*scale, (c2[y]+y0)*scale, (c3[x]+x0)*scale, (c3[y]+y0)*scale, outline=0xFFFF00)
+    triangle = Triangle((c1[x])*scale+x0, (-c1[y])*scale+y0, (c2[x])*scale+x0, (-c2[y])*scale+y0, (c3[x])*scale+x0, (-c3[y])*scale+y0, outline=0xFFFF00)
     splash.append(triangle)
 
-
     display.show(splash)
+
 
 def area():
     c1 = []
@@ -67,8 +82,9 @@ def area():
                     c3 = [int(o) for o in r3.split(",")]
                     A = (1/2)*abs(c1[x]*(c2[y] - c3[y]) + c2[x]*(c3[y] - c1[y]) + c3[x]*(c1[y] - c2[y])) # Easy plug and play equation for a triangle's area
                     qdisp(f" c1: {c1} \n c2: {c2} \n c3: {c3} \nArea: {A}") # add title block to display group
+                    sleep(1)
+                    qgraph(c1,c2,c3,A)
                     return A
-                    qgraph(c1,c2,c3)
 
                 except:
                     print("Invalid Coordinate 3 , please enter in 'x,y' format")
@@ -90,5 +106,5 @@ def area():
 
 
 while True:
-    qgraph([1,1],[1,8],[5,5])
+    qgraph([1,1],[1,7],[5,5],12)
     #print(f"Area = {area()}")
