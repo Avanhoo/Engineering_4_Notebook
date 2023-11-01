@@ -1,7 +1,6 @@
-# Triangle Are Solver - Afton Van Hooser
+# Triangle Are Solver and Dispayer - Afton Van Hooser
 import board
 import busio
-import digitalio
 import terminalio
 import displayio
 from time import sleep
@@ -98,13 +97,6 @@ def area():
             print("Invalid Coordinate 1 , please enter in 'x,y' format")
             continue
 
-            
-
-
-
-
-
 
 while True:
-    qgraph([1,1],[1,7],[5,5],12)
-    #print(f"Area = {area()}")
+    area()
