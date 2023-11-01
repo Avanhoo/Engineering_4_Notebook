@@ -10,7 +10,7 @@
 * [FEA Part 3](#beam-iteration-fea-3)
 * [Landing Area Part 1](#landing-area-1)
 * [Landing Area Part 2](#landing-area-2)
-* [Raspberry_Pi_Assignment_Template](#raspberry_pi_assignment_template)
+* [Morse code 1](#morse-code-1)
 
 
 
@@ -847,7 +847,70 @@ I used the OLED code from the previous assignment to print out the text, but I t
 ![6x](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3b32bd19-04f1-481e-a58c-25aadcaa0b13)
 
 
+## Morse code 1
 
+### Assignment Description
+
+Translate a user text input into morse code and print it out. Exit the program with "-q".
+
+### Evidence 
+
+![morse_code_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/5a4d8176-27b7-4439-a16e-d1bcbe381231)
+
+### Wiring
+
+N/A
+
+### Code
+[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/morse.py)
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+# Morse code translator - Afton Van Hooser
+print("Morse code translator - Afton Van Hooser")
+finalTxt = ""
+char = 0
+MORSE_CODE = { 'A':'.-', 'B':'-...',
+    'C':'-.-.', 'D':'-..', 'E':'.',
+    'F':'..-.', 'G':'--.', 'H':'....',
+    'I':'..', 'J':'.---', 'K':'-.-',
+    'L':'.-..', 'M':'--', 'N':'-.',
+    'O':'---', 'P':'.--.', 'Q':'--.-',
+    'R':'.-.', 'S':'...', 'T':'-',
+    'U':'..-', 'V':'...-', 'W':'.--',
+    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+    '1':'.----', '2':'..---', '3':'...--',
+    '4':'....-', '5':'.....', '6':'-....',
+    '7':'--...', '8':'---..', '9':'----.',
+    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+    '?':'..--..', '/':'-..-.', '-':'-....-',
+    '(':'-.--.', ')':'-.--.-', ' ':'/'}
+
+while True:
+    rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+
+    if "-Q" in rawTxt: # Checks if user would like to exit
+        exit()
+    try:
+        for char in range(len(rawTxt)): # Iterates through each character of the input text
+            finalTxt += MORSE_CODE[rawTxt[char]] + " " # Translates and adds a space
+    except:
+        finalTxt = f'--Invalid input: "{rawTxt[char]}"' # Tells you if a character you typed was invalid
+
+    print(finalTxt)
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+This assignment was all string work, which I luckily have experience with from messing with a VFD. The main idea of the code is to iterate through each character of input and translate it, which can be done with a for loop and dictionary. I put this process in a try function as inputting anything like "$" which wasn't in the morse code dictionary would break the code. Lastly I made it quickly check if "-q" was sent, and subsequently exit the program through exit() if so.
 
 
 
@@ -899,9 +962,9 @@ Give me a link to your code. [Something like this](https://github.com/millerm22/
 
 What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
 
+
+
 &nbsp;
-
-
 
 ## Onshape_Assignment_Template
 
