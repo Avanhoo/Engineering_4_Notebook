@@ -715,7 +715,7 @@ Graph the landing area on an OLED screen.
 
 ### Evidence 
 
-![Landing_video](images/Landing_video.mp4)
+![Landing_video](images/landing_video.gif)
 
 ### Wiring
 
@@ -841,7 +841,8 @@ while True:
 ### Reflection
 
 I used the OLED code from the previous assignment to print out the text, but I turned it into a function qdisp(). This made it much less cluttered in my area function. Graphing the landing area was the main part, though. There are libraries built to draw lines and shapes for you, and you can easily graph the triangles and lines from this, though where (0,0) would normally be on a graph is actually (64,32) on the display, as the coordinates start from the top left corner of the screen. I also decided to make it automatically scale the image to fit the screen. I used another function to do this, which checks the maximum scale which will fit the whole triangle on the screen by increasing the scale slowly until it doesn't fit. I was worried that this would give misleading senses of size, but I figured out that by also scaling the center circle I could make it clear that it was a zoomed-in image.
-![1x](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/4264f785-fb65-47f0-9cf2-c38dc8d97b51)
+
+![1x](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/235cf540-48c6-48b2-8c7b-046b226508b4)
 ![2x](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/7ac77b14-9334-435d-a7d7-9bbf35c05cb5)
 ![6x](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/3b32bd19-04f1-481e-a58c-25aadcaa0b13)
 
