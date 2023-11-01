@@ -33,7 +33,7 @@ def qgraph(c1,c2,c3,A):
     y0 = 32
     splash = displayio.Group()
 
-    for i in range (1,5):
+    for i in range (1,7):
         scale = i
         if (abs(c1[x])*scale > 60) or (abs(c2[x])*scale > 60) or (abs(c3[x])*scale > 60):
             scale = i-1
@@ -46,7 +46,7 @@ def qgraph(c1,c2,c3,A):
 
     hline = Line(0,y0,128,y0, color=0xFFFF00)
     vline = Line(x0,0,x0,64, color=0xFFFF00)
-    circle = Circle(x0, y0, 2, outline=0xFFFF00)
+    circle = Circle(x0, y0, 2*scale, outline=0xFFFF00)
     text = label.Label(terminalio.FONT, text=f"A={A}\n\n\n{scale}x", color=0xFFFF00, x=5, y=5)
     splash.append(hline) 
     splash.append(vline)
