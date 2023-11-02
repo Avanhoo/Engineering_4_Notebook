@@ -1,7 +1,13 @@
 # Morse code translator - Afton Van Hooser
+import board
+import digitalio
+from time import sleep
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
 print("Morse code translator - Afton Van Hooser")
 finalTxt = ""
-char = 0
+delay = .25
 MORSE_CODE = { 'A':'.-', 'B':'-...',
     'C':'-.-.', 'D':'-..', 'E':'.',
     'F':'..-.', 'G':'--.', 'H':'....',
@@ -30,3 +36,20 @@ while True:
         finalTxt = f'--Invalid input: "{rawTxt[char]}"' # Tells you if a character you typed was invalid
 
     print(finalTxt)
+
+    for i in range(len(finalTxt)):# Flashing light loop
+        if finalTxt[i] == ".": #    Dot
+            led.value = True
+            sleep(delay)
+            led.value = False
+        elif finalTxt[i] == "-": #  Dash
+            led.value = True
+            sleep(delay*3)
+            led.value = False
+        elif finalTxt[i] == " ": #  Between letters: inherent delay(1) + 1 + inherent delay(1) = 3 delay
+            sleep(delay)
+        if finalTxt[i] == "/": #    Between words: letter delay(3) + inherent delay + letter delay(3) = 7 delay
+            pass
+        else:
+            sleep(delay) #          Inherent Delay after every cycle
+        
