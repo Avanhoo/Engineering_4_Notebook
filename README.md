@@ -914,6 +914,95 @@ This assignment was all string work, which I luckily have experience with from m
 
 
 
+## Morse code 2
+
+### Assignment Description
+
+Make the morse code translator flash out the morse code on an LED.
+
+### Evidence 
+
+![ezgif com-crop (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/bc114db3-9a6c-46a0-8476-2ed248db746e)
+
+### Wiring
+
+This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
+
+### Code
+Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+# Morse code translator - Afton Van Hooser
+import board
+import digitalio
+from time import sleep
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+print("Morse code translator - Afton Van Hooser")
+finalTxt = ""
+delay = .25
+MORSE_CODE = { 'A':'.-', 'B':'-...',
+    'C':'-.-.', 'D':'-..', 'E':'.',
+    'F':'..-.', 'G':'--.', 'H':'....',
+    'I':'..', 'J':'.---', 'K':'-.-',
+    'L':'.-..', 'M':'--', 'N':'-.',
+    'O':'---', 'P':'.--.', 'Q':'--.-',
+    'R':'.-.', 'S':'...', 'T':'-',
+    'U':'..-', 'V':'...-', 'W':'.--',
+    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+    '1':'.----', '2':'..---', '3':'...--',
+    '4':'....-', '5':'.....', '6':'-....',
+    '7':'--...', '8':'---..', '9':'----.',
+    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+    '?':'..--..', '/':'-..-.', '-':'-....-',
+    '(':'-.--.', ')':'-.--.-', ' ':'/'}
+
+while True:
+    rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+
+    if "-Q" in rawTxt: # Checks if user would like to exit
+        exit()
+    try:
+        for char in range(len(rawTxt)): # Iterates through each character of the input text
+            finalTxt += MORSE_CODE[rawTxt[char]] + " " # Translates and adds a space
+    except:
+        finalTxt = f'--Invalid input: "{rawTxt[char]}"' # Tells you if a character you typed was invalid
+
+    print(finalTxt)
+
+    for i in range(len(finalTxt)):# Flashing light loop
+        if finalTxt[i] == ".": #    Dot
+            led.value = True
+            sleep(delay)
+            led.value = False
+        elif finalTxt[i] == "-": #  Dash
+            led.value = True
+            sleep(delay*3)
+            led.value = False
+        elif finalTxt[i] == " ": #  Between letters: inherent delay(1) + 1 + inherent delay(1) = 3 delay
+            sleep(delay)
+        if finalTxt[i] == "/": #    Between words: letter delay(3) + 1 + letter delay(3) = 7 delay
+            sleep(delay)
+        else:
+            sleep(delay) #          Inherent Delay after every cycle
+        
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+The hardest part of this assignment was getting the proper delay times. I made my flashing light for loop have a delay after every loop. This made my life hard as I then had to account for this in my other delays. Instead of having the delay between letters sleep for 3 times the delay time (as is standard), I had it sleep for 1 times the delay time, as I had to account for the inherent delay of both the previous letter and of the delay itself. I spent a lot of time toiling away trying to logic out the proper delays, though I'm not sure if there's an easier alternative.
+
 
 
 
