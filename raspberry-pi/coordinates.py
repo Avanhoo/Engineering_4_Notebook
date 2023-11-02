@@ -33,7 +33,7 @@ def qgraph(c1,c2,c3,A):
     y0 = 32
     splash = displayio.Group()
 
-    for i in range (1,7):
+    for i in range (1,7): # Automatically scales the image to fit on the screen
         scale = i
         if (abs(c1[x])*scale > 60) or (abs(c2[x])*scale > 60) or (abs(c3[x])*scale > 60):
             scale = i-1
