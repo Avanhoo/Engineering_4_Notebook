@@ -48,8 +48,8 @@ while True:
             led.value = False
         elif finalTxt[i] == " ": #  Between letters: inherent delay(1) + 1 + inherent delay(1) = 3 delay
             sleep(delay)
-        if finalTxt[i] == "/": #    Between words: letter delay(3) + inherent delay + letter delay(3) = 7 delay
-            pass
+        if finalTxt[i] == "/": #    Between words: letter delay(3) + 1 + letter delay(3) = 7 delay
+            sleep(delay)
         else:
             sleep(delay) #          Inherent Delay after every cycle
         
