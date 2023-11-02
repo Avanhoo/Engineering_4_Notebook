@@ -11,6 +11,7 @@
 * [Landing Area Part 1](#landing-area-1)
 * [Landing Area Part 2](#landing-area-2)
 * [Morse code 1](#morse-code-1)
+* [Morse code 2](#morse-code-2)
 
 
 
