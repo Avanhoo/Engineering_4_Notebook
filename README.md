@@ -863,7 +863,7 @@ Translate a user text input into morse code and print it out. Exit the program w
 N/A
 
 ### Code
-[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/morse.py)
+
 <details>
 <summary><b>Click to Show</b></summary>
     
@@ -930,7 +930,7 @@ Make the morse code translator flash out the morse code on an LED.
 This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
 
 ### Code
-
+[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/morse.py)
 <details>
 <summary><b>Click to Show</b></summary>
     
