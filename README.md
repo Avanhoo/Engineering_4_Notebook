@@ -11,6 +11,7 @@
 * [Landing Area Part 1](#landing-area-1)
 * [Landing Area Part 2](#landing-area-2)
 * [Morse code 1](#morse-code-1)
+* [Morse code 2](#morse-code-2)
 
 
 
@@ -855,14 +856,14 @@ Translate a user text input into morse code and print it out. Exit the program w
 
 ### Evidence 
 
-![morse_code_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/5a4d8176-27b7-4439-a16e-d1bcbe381231)
+![morse_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/e95c4548-3c52-4013-9e71-edfc143e32a1)
 
 ### Wiring
 
 N/A
 
 ### Code
-[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/morse.py)
+
 <details>
 <summary><b>Click to Show</b></summary>
     
@@ -913,6 +914,94 @@ while True:
 This assignment was all string work, which I luckily have experience with from messing with a VFD. The main idea of the code is to iterate through each character of input and translate it, which can be done with a for loop and dictionary. I put this process in a try function as inputting anything like "$" which wasn't in the morse code dictionary would break the code. Lastly I made it quickly check if "-q" was sent, and subsequently exit the program through exit() if so.
 
 
+
+## Morse code 2
+
+### Assignment Description
+
+Make the morse code translator flash out the morse code on an LED.
+
+### Evidence 
+
+![morse_2_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/bc114db3-9a6c-46a0-8476-2ed248db746e)
+
+### Wiring
+
+This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
+
+### Code
+[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/morse.py)
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+# Morse code translator - Afton Van Hooser
+import board
+import digitalio
+from time import sleep
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+print("Morse code translator - Afton Van Hooser")
+finalTxt = ""
+delay = .25
+MORSE_CODE = { 'A':'.-', 'B':'-...',
+    'C':'-.-.', 'D':'-..', 'E':'.',
+    'F':'..-.', 'G':'--.', 'H':'....',
+    'I':'..', 'J':'.---', 'K':'-.-',
+    'L':'.-..', 'M':'--', 'N':'-.',
+    'O':'---', 'P':'.--.', 'Q':'--.-',
+    'R':'.-.', 'S':'...', 'T':'-',
+    'U':'..-', 'V':'...-', 'W':'.--',
+    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+    '1':'.----', '2':'..---', '3':'...--',
+    '4':'....-', '5':'.....', '6':'-....',
+    '7':'--...', '8':'---..', '9':'----.',
+    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+    '?':'..--..', '/':'-..-.', '-':'-....-',
+    '(':'-.--.', ')':'-.--.-', ' ':'/'}
+
+while True:
+    rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+
+    if "-Q" in rawTxt: # Checks if user would like to exit
+        exit()
+    try:
+        for char in range(len(rawTxt)): # Iterates through each character of the input text
+            finalTxt += MORSE_CODE[rawTxt[char]] + " " # Translates and adds a space
+    except:
+        finalTxt = f'--Invalid input: "{rawTxt[char]}"' # Tells you if a character you typed was invalid
+
+    print(finalTxt)
+
+    for i in range(len(finalTxt)):# Flashing light loop
+        if finalTxt[i] == ".": #    Dot
+            led.value = True
+            sleep(delay)
+            led.value = False
+        elif finalTxt[i] == "-": #  Dash
+            led.value = True
+            sleep(delay*3)
+            led.value = False
+        elif finalTxt[i] == " ": #  Between letters: inherent delay(1) + 1 + inherent delay(1) = 3 delay
+            sleep(delay)
+        if finalTxt[i] == "/": #    Between words: letter delay(3) + 1 + letter delay(3) = 7 delay
+            sleep(delay)
+        else:
+            sleep(delay) #          Inherent Delay after every cycle
+        
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+The hardest part of this assignment was getting the proper delay times. I made my flashing light for loop have a delay after every loop. This made my life hard as I then had to account for this in my other delays. Instead of having the delay between letters sleep for 3 times the delay time (as is standard), I had it sleep for 1 times the delay time, as I had to account for the inherent delay of both the previous letter and of the delay itself. I spent a lot of time toiling away trying to logic out the proper delays, though I'm not sure if there's an easier alternative.
 
 
 
