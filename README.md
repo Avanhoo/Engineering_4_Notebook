@@ -893,6 +893,7 @@ MORSE_CODE = { 'A':'.-', 'B':'-...',
 
 while True:
     rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+    finalTxt = ""
 
     if "-Q" in rawTxt: # Checks if user would like to exit
         exit()
@@ -966,6 +967,7 @@ MORSE_CODE = { 'A':'.-', 'B':'-...',
 
 while True:
     rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+    finalTxt = ""
 
     if "-Q" in rawTxt: # Checks if user would like to exit
         exit()
@@ -1002,6 +1004,7 @@ while True:
 ### Reflection
 
 The hardest part of this assignment was getting the proper delay times. I made my flashing light for loop have a delay after every loop. This made my life hard as I then had to account for this in my other delays. Instead of having the delay between letters sleep for 3 times the delay time (as is standard), I had it sleep for 1 times the delay time, as I had to account for the inherent delay of both the previous letter and of the delay itself. I spent a lot of time toiling away trying to logic out the proper delays, though I'm not sure if there's an easier alternative.
+Also credit to Vince Jones for finding a fatal flaw in my code where the morse code output never reset and kept adding onto itself, I would have missed it if not for him.
 
 
 
