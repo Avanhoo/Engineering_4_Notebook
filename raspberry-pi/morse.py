@@ -26,6 +26,7 @@ MORSE_CODE = { 'A':'.-', 'B':'-...',
 
 while True:
     rawTxt = input("Input Text: ").upper() # Takes input from user and capitalizes it
+    finalTxt = ""
 
     if "-Q" in rawTxt: # Checks if user would like to exit
         exit()
