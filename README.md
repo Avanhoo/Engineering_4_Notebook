@@ -856,7 +856,7 @@ Translate a user text input into morse code and print it out. Exit the program w
 
 ### Evidence 
 
-![morse_code_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/5a4d8176-27b7-4439-a16e-d1bcbe381231)
+![morse_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/e95c4548-3c52-4013-9e71-edfc143e32a1)
 
 ### Wiring
 
@@ -923,7 +923,7 @@ Make the morse code translator flash out the morse code on an LED.
 
 ### Evidence 
 
-![ezgif com-crop (1)](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/bc114db3-9a6c-46a0-8476-2ed248db746e)
+![morse_2_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/bc114db3-9a6c-46a0-8476-2ed248db746e)
 
 ### Wiring
 
