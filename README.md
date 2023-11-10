@@ -12,6 +12,7 @@
 * [Landing Area Part 2](#landing-area-2)
 * [Morse code 1](#morse-code-1)
 * [Morse code 2](#morse-code-2)
+* [Data Part 1](#data-part-1)
 
 
 
@@ -1007,6 +1008,58 @@ The hardest part of this assignment was getting the proper delay times. I made m
 Also credit to Vince Jones for finding a fatal flaw in my code where the morse code output never reset and kept adding onto itself, I would have missed it if not for him.
 
 
+
+## Data Part 1
+
+### Assignment Description
+
+Make a pi record accelerometer data in a spreadsheet. The pi must run on its own and create a .csv file.
+
+### Evidence 
+
+![data_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2e190c8e-52c3-4fe2-a905-3cd5f4e6e863)
+
+|Time  |X Acceleration|Y Acceleration|Z Acceleration|Tilted?|
+|------|---------|---------|---------|---|
+|7.96  |0.869095 |0.936133 |0.921768 |0  |
+|8.266 |0.830788 |0.826    |0.864307 |0  |
+|8.571 |0.842759 |0.857124 |0.859519 |0  |
+|8.876 |0.873884 |0.847548 |0.828394 |0  |
+|9.184 |1.03908  |1.08936  |1.40061  |0  |
+|9.487 |-0.529119|-0.483629|-0.514753|0  |
+|9.792 |-3.35907 |-3.71341 |-3.68228 |0  |
+|10.099|-6.30393 |-5.9472  |-5.76284 |0  |
+|10.402|-10.2376 |-9.91199 |-10.1275 |1  |
+|10.708|-9.4547  |-9.46667 |-9.36372 |1  |
+|11.015|-8.78672 |-8.81066 |-9.01656 |0  |
+|11.324|0.577003 |0.234632 |0.612916 |0  |
+|11.632|7.72609  |7.70454  |7.57047  |0  |
+|11.939|9.79229  |9.85214  |9.72285  |0  |
+|12.346|10.5704  |10.4938  |10.5656  |1  |
+
+
+### Wiring
+
+This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
+
+### Code
+Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
 
 
 
