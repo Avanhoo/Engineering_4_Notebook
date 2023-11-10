@@ -1019,7 +1019,7 @@ Make a pi record accelerometer data in a spreadsheet. The pi must run on its own
 
 ![data_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2e190c8e-52c3-4fe2-a905-3cd5f4e6e863)
 
-|Time  |X Acceleration|Y Acceleration|Z Acceleration|Tilted?|
+|Time (s)|X Acceleration|Y Acceleration|Z Acceleration|Tilted?|
 |------|---------|---------|---------|---|
 |7.96  |0.869095 |0.936133 |0.921768 |0  |
 |8.266 |0.830788 |0.826    |0.864307 |0  |
@@ -1043,7 +1043,7 @@ Make a pi record accelerometer data in a spreadsheet. The pi must run on its own
 This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
 
 ### Code
-Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
+
 
 <details>
 <summary><b>Click to Show</b></summary>
@@ -1051,7 +1051,40 @@ Give me a link to your code. [Something like this](https://github.com/millerm22/
 <p>
     
 ```python
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+from time import sleep, monotonic
 
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sled = digitalio.DigitalInOut(board.LED)
+sled.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+i2c = busio.I2C(scl_pin, sda_pin)
+imu = adafruit_mpu6050.MPU6050(i2c)
+
+delay = .15
+print(monotonic())
+with open("/data.csv", "a") as datalog: # Opens / creates a file called data.csv to which the data is stored to
+    while True:
+        print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}") # Prints the acceleration
+        if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
+            led.value = True
+            tilt = 1
+        else:
+            led.value = False
+            tilt = 0
+
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[0]},{imu.acceleration[0]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.flush()
+
+        sled.value = True # Flashes onboard LED
+        sleep(delay/2)
+        sled.value = False
+        sleep(delay/2)
 ```
 </p>  
     
@@ -1059,7 +1092,8 @@ Give me a link to your code. [Something like this](https://github.com/millerm22/
 
 ### Reflection
 
-What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience? Your goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person. Think about your audience for this one, which may be "future you" (when you realize you need some of this code in three months), me, or your college admission committee!
+Picos can't read and write at the same time, so we had to use a boot file which set the mode based on a switch. This made testing a bit annoying as I didn't think you could see the terminal while the pico was on read only mode. This made debugging a little complicated, but the code worked well from the start. Just remember everything you want saved must be done in the "context" of the data.cvs file with the "open" function, and don't forget your new line or else the spreadsheet will all be in one row.
+
 
 
 
