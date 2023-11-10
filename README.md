@@ -1019,6 +1019,8 @@ Make a pi record accelerometer data in a spreadsheet. The pi must run on its own
 
 ![data_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2e190c8e-52c3-4fe2-a905-3cd5f4e6e863)
 
+#### Data Collected:
+
 |Time (s)|X Acceleration|Y Acceleration|Z Acceleration|Tilted?|
 |------|---------|---------|---------|---|
 |7.96  |0.869095 |0.936133 |0.921768 |0  |
