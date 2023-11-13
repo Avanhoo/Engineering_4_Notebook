@@ -1042,7 +1042,7 @@ Make a pi record accelerometer data in a spreadsheet. The pi must run on its own
 
 ### Wiring
 
-This may not be applicable to all assignments. Anything where you wire something up, include the wiring diagram here. The diagram should be clear enough that I can recreate the wiring from scratch. 
+![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/e37473fb-28b9-4f45-8d2c-0144e1a53d64)
 
 ### Code
 
@@ -1097,6 +1097,74 @@ with open("/data.csv", "a") as datalog: # Opens / creates a file called data.csv
 Picos can't read and write at the same time, so we had to use a boot file which set the mode based on a switch. This made testing a bit annoying as I didn't think you could see the terminal while the pico was on read only mode. This made debugging a little complicated, but the code worked well from the start. Just remember everything you want saved must be done in the "context" of the data.cvs file with the "open" function, and don't forget your new line or else the spreadsheet will all be in one row.
 
 
+
+## Data part 2
+
+### Assignment Description
+
+Graph the acceleration and tilt data from the data.csv file.
+
+### Evidence 
+
+(Data & Graph Source)[https://docs.google.com/spreadsheets/d/1pX5fa3qjWEB4xVvUnExo1n80eGER_k2NqQpAeccUuP4/edit#gid=489656232]
+![image](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/9ce4774b-397a-4959-a1cb-a275cf4800e6)
+
+### Wiring
+
+![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/82f199c5-03ea-4d08-aadd-346fb8843bf1)
+
+### Code
+Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+from time import sleep, monotonic
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sled = digitalio.DigitalInOut(board.LED)
+sled.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+i2c = busio.I2C(scl_pin, sda_pin)
+imu = adafruit_mpu6050.MPU6050(i2c)
+
+delay = .15
+print(monotonic())
+with open("/data.csv", "a") as datalog:
+    while True:
+        print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}") # Prints the acceleration
+        if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
+            led.value = True
+            tilt = 1
+        else:
+            led.value = False
+            tilt = 0
+
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.flush()
+
+        sled.value = True # Flashes onboard LED
+        sleep(delay/2)
+        sled.value = False
+        sleep(delay/2)
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+Forgot to change values, was all saving x, pi wiped on plug out (WIP)
 
 
 
