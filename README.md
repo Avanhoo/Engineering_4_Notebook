@@ -1080,7 +1080,7 @@ with open("/data.csv", "a") as datalog: # Opens / creates a file called data.csv
             led.value = False
             tilt = 0
 
-        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[0]},{imu.acceleration[0]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
         datalog.flush()
 
         sled.value = True # Flashes onboard LED
