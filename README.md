@@ -12,6 +12,8 @@
 * [Landing Area Part 2](#landing-area-2)
 * [Morse code 1](#morse-code-1)
 * [Morse code 2](#morse-code-2)
+* [Data Part 1](#data-part-1)
+* [Data Part 2](#data-part-2)
 
 
 
@@ -1008,7 +1010,161 @@ Also credit to Vince Jones for finding a fatal flaw in my code where the morse c
 
 
 
+## Data Part 1
 
+### Assignment Description
+
+Make a pi record accelerometer data in a spreadsheet. The pi must run on its own and create a .csv file.
+
+### Evidence 
+
+![data_1_proof](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/2e190c8e-52c3-4fe2-a905-3cd5f4e6e863)
+
+#### Data Collected:
+
+|Time (s)|X Acceleration|Y Acceleration|Z Acceleration|Tilted?|
+|------|---------|---------|---------|---|
+|7.96  |0.869095 |0.936133 |0.921768 |0  |
+|8.266 |0.830788 |0.826    |0.864307 |0  |
+|8.571 |0.842759 |0.857124 |0.859519 |0  |
+|8.876 |0.873884 |0.847548 |0.828394 |0  |
+|9.184 |1.03908  |1.08936  |1.40061  |0  |
+|9.487 |-0.529119|-0.483629|-0.514753|0  |
+|9.792 |-3.35907 |-3.71341 |-3.68228 |0  |
+|10.099|-6.30393 |-5.9472  |-5.76284 |0  |
+|10.402|-10.2376 |-9.91199 |-10.1275 |1  |
+|10.708|-9.4547  |-9.46667 |-9.36372 |1  |
+|11.015|-8.78672 |-8.81066 |-9.01656 |0  |
+|11.324|0.577003 |0.234632 |0.612916 |0  |
+|11.632|7.72609  |7.70454  |7.57047  |0  |
+|11.939|9.79229  |9.85214  |9.72285  |0  |
+|12.346|10.5704  |10.4938  |10.5656  |1  |
+
+
+### Wiring
+
+![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/e37473fb-28b9-4f45-8d2c-0144e1a53d64)
+
+### Code
+
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+from time import sleep, monotonic
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sled = digitalio.DigitalInOut(board.LED)
+sled.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+i2c = busio.I2C(scl_pin, sda_pin)
+imu = adafruit_mpu6050.MPU6050(i2c)
+
+delay = .15
+print(monotonic())
+with open("/data.csv", "a") as datalog: # Opens / creates a file called data.csv to which the data is stored to
+    while True:
+        print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}") # Prints the acceleration
+        if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
+            led.value = True
+            tilt = 1
+        else:
+            led.value = False
+            tilt = 0
+
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.flush()
+
+        sled.value = True # Flashes onboard LED
+        sleep(delay/2)
+        sled.value = False
+        sleep(delay/2)
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+Picos can't read and write at the same time, so we had to use a boot file which set the mode based on a switch. This made testing a bit annoying as I didn't think you could see the terminal while the pico was on read only mode. This made debugging a little complicated, but the code worked well from the start. Just remember everything you want saved must be done in the "context" of the data.cvs file with the "open" function, and don't forget your new line or else the spreadsheet will all be in one row.
+
+
+
+## Data part 2
+
+### Assignment Description
+
+Graph the acceleration and tilt data from the data.csv file.
+
+### Evidence 
+
+(Data & Graph Source)[https://docs.google.com/spreadsheets/d/1pX5fa3qjWEB4xVvUnExo1n80eGER_k2NqQpAeccUuP4/edit#gid=489656232]
+![image](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/9ce4774b-397a-4959-a1cb-a275cf4800e6)
+
+### Wiring
+
+![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/82f199c5-03ea-4d08-aadd-346fb8843bf1)
+
+### Code
+
+<details>
+<summary><b>Click to Show</b></summary>
+    
+<p>
+    
+```python
+import board
+import busio
+import adafruit_mpu6050
+import digitalio
+from time import sleep, monotonic
+
+led = digitalio.DigitalInOut(board.GP3)
+led.direction = digitalio.Direction.OUTPUT
+sled = digitalio.DigitalInOut(board.LED)
+sled.direction = digitalio.Direction.OUTPUT
+sda_pin = board.GP16
+scl_pin = board.GP17
+i2c = busio.I2C(scl_pin, sda_pin)
+imu = adafruit_mpu6050.MPU6050(i2c)
+
+delay = .15
+print(monotonic())
+with open("/data.csv", "a") as datalog:
+    while True:
+        print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}") # Prints the acceleration
+        if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
+            led.value = True
+            tilt = 1
+        else:
+            led.value = False
+            tilt = 0
+
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.flush()
+
+        sled.value = True # Flashes onboard LED
+        sleep(delay/2)
+        sled.value = False
+        sleep(delay/2)
+
+```
+</p>  
+    
+</details>
+
+### Reflection
+
+I had some frustration regarding the pi and it wiping. For some reason it would completely wipe and reset to a blank slate whenever I unplugged it while the program was running. This is something that often happens when the Pico is shorted out, but I wasn't (to my knowledge) shorting it out. I could get it to not wipe about 50% of the time by turning off the switch on the battery connector before disconnecting the battery. The file was also sometimes filled with the ÿ character, which I assume was some weird corruption that occured when I unplugged it. I also fixed an error where it was saving the X acceleration to all 3 axis spots.
 
 
 
