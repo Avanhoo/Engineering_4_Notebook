@@ -1115,7 +1115,6 @@ Graph the acceleration and tilt data from the data.csv file.
 ![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/82f199c5-03ea-4d08-aadd-346fb8843bf1)
 
 ### Code
-Give me a link to your code. [Something like this](https://github.com/millerm22/Engineering_4_Notebook/blob/main/Raspberry_Pi/hello_world.py). Don't make me hunt through your folders, give me a nice link to click to take me there! Remember to **COMMENT YOUR CODE** if you want full credit. 
 
 <details>
 <summary><b>Click to Show</b></summary>
@@ -1165,8 +1164,7 @@ with open("/data.csv", "a") as datalog:
 
 ### Reflection
 
-Forgot to change values, was all saving x, pi wiped on plug out (WIP)
-
+I had some frustration regarding the pi and it wiping. For some reason it would completely wipe and reset to a blank slate whenever I unplugged it while the program was running. This is something that often happens when the Pico is shorted out, but I wasn't (to my knowledge) shorting it out. I could get it to not wipe about 50% of the time by turning off the switch on the battery connector before disconnecting the battery. The file was also sometimes filled with the ÿ character, which I assume was some weird corruption that occured when I unplugged it. I also fixed an error where it was saving the X acceleration to all 3 axis spots.
 
 
 
