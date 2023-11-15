@@ -13,9 +13,7 @@ scl_pin = board.GP17
 i2c = busio.I2C(scl_pin, sda_pin)
 imu = adafruit_mpu6050.MPU6050(i2c)
 
-delay = .15
-print(monotonic())
-with open("/data.csv", "a") as datalog:
+with open("/data.csv", "a") as datalog: # Opens the data 
     while True:
         print(f"Accel: {round(imu.acceleration[0]-.6,1)}, {round(imu.acceleration[1]+.2,1)}, {round(imu.acceleration[2],1)}") # Prints the acceleration
         if abs(imu.acceleration[0]-.6) > 9.3 or abs(imu.acceleration[1]+.2) > 9.3:
@@ -25,7 +23,7 @@ with open("/data.csv", "a") as datalog:
             led.value = False
             tilt = 0
 
-        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[0]},{imu.acceleration[0]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+        datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
         datalog.flush()
 
         sled.value = True # Flashes onboard LED
