@@ -1107,7 +1107,8 @@ Graph the acceleration and tilt data from the data.csv file.
 
 ### Evidence 
 
-(Data & Graph Source)[https://docs.google.com/spreadsheets/d/1pX5fa3qjWEB4xVvUnExo1n80eGER_k2NqQpAeccUuP4/edit#gid=489656232]
+[Data & Graph Source](https://docs.google.com/spreadsheets/d/1pX5fa3qjWEB4xVvUnExo1n80eGER_k2NqQpAeccUuP4/edit#gid=489656232)
+
 ![image](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/9ce4774b-397a-4959-a1cb-a275cf4800e6)
 
 ### Wiring
@@ -1115,6 +1116,8 @@ Graph the acceleration and tilt data from the data.csv file.
 ![data](https://github.com/Avanhoo/Engineering_4_Notebook/assets/113116247/82f199c5-03ea-4d08-aadd-346fb8843bf1)
 
 ### Code
+
+**[Source](https://github.com/Avanhoo/Engineering_4_Notebook/blob/main/raspberry-pi/data_storage.py)**
 
 <details>
 <summary><b>Click to Show</b></summary>
