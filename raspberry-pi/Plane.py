@@ -51,5 +51,4 @@ while timer >= 0: # Wing coupling loop
 import board
 import wifi
 
-wifi.start_ap("plane", "time2fly", max_connections = 1)
-print(wifi.ping(10.0.0.0, 2))
+wifi.radio.connect("test", "testtesttest")
