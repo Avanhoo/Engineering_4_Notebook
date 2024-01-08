@@ -5,16 +5,17 @@ import busio
 
 sda_pin = board.GP16
 scl_pin = board.GP17
-i2c = busio.I2C(scl_pin, sda_pin)
+#i2c = busio.I2C(scl_pin, sda_pin) # use for debuggin i2c issues
 addr = None
 
 while addr == None: # Connects over I2C
     try:
+        i2c = busio.I2C(scl_pin, sda_pin)
         addr = i2c.scan()
-    finally:
-        print(f"Successfully paired to {addr}")
-    sleep(.2)
-
+    except:
+        print("failed, trying again...")
+    sleep(.5)
+print(f"Successfully paired to {addr}")
 
 # Master
 aileron = 9 # Placeholder for real values
@@ -34,7 +35,7 @@ def recieve_commands():
     elevator = arr[1]
     return aileron, elevator
 
-mode = 0 # Only necesarry for test file
+mode = 1 # Only necesarry for test file
 while mode == 0:
     aileron = -89
     elevator = 37
