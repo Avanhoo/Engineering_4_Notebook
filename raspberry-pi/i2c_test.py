@@ -12,8 +12,8 @@ while addr == None: # Connects over I2C
     try:
         i2c = busio.I2C(scl_pin, sda_pin)
         addr = i2c.scan()
-    except:
-        print("failed, trying again...")
+    except Exception as err:
+        print(f"failed ({err}), trying again...")
     sleep(.5)
 print(f"Successfully paired to {addr}")
 
@@ -35,7 +35,7 @@ def recieve_commands():
     elevator = arr[1]
     return aileron, elevator
 
-mode = 1 # Only necesarry for test file
+mode = 0 # Only necesarry for test file
 while mode == 0:
     aileron = -89
     elevator = 37

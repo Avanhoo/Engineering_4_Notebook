@@ -1,3 +1,7 @@
+import sys
+from array import array
+from typing import Any, Union
+
 def decompress(__data: bytes, wbits: int = 0, bufsize: int = 0) -> bytes: 
     """
     Return decompressed *data* as bytes. *wbits* is DEFLATE dictionary window
@@ -18,10 +22,10 @@ class DecompIO:
     24..31 (16 + 8..15), meaning that input stream has gzip header.
     """
     def read(self) -> int:
-        ...
+        pass
 
     def readinto(self):
-        ...
+        pass
 
     def readline(self):
-        ...
+        pass

@@ -1,15 +1,14 @@
 """Access and control MicroPython internals."""
 
-from collections.abc import Callable
-from typing import TypeVar
+from typing import Any, overload, Callable, TypeVar
 
 
 _T = TypeVar('_T')
 
 
-def const(expr: ...) -> ...:
+def const(expr: Any) -> Any:
     """Used to declare that the expression is a constant so that the compile can
-    optimise it. The use of this function should be as follows::
+    optimise it.  The use of this function should be as follows::
 
     from micropython import const
 
@@ -29,11 +28,17 @@ def const(expr: ...) -> ...:
     ...
 
 
-def opt_level(level: int=...) -> int:
+@overload
+def opt_level() -> int:
     """If *level* is given then this function sets the optimisation level for subsequent
     compilation of scripts, and returns ``None``.  Otherwise it returns the current
     optimisation level.
     """
+    ...
+
+
+@overload
+def opt_level(level: int) -> None:
     ...
 
 
@@ -50,7 +55,8 @@ def alloc_emergency_exception_buf(size: int) -> None:
     ...
 
 
-def mem_info(verbose: ...=...) -> None:
+@overload
+def mem_info() -> None:
     """Print information about currently used memory.  If the *verbose* argument
     is given then extra information is printed.
 
@@ -61,7 +67,13 @@ def mem_info(verbose: ...=...) -> None:
     ...
 
 
-def qstr_info(verbose=...) -> None:
+@overload
+def mem_info(verbose: Any) -> None:
+    ...
+
+
+@overload
+def qstr_info() -> None:
     """Print information about currently interned strings.  If the *verbose*
     argument is given then extra information is printed.
 
@@ -69,6 +81,11 @@ def qstr_info(verbose=...) -> None:
     includes the number of interned strings and the amount of RAM they use.  In
     verbose mode it prints out the names of all RAM-interned strings.
     """
+    ...
+
+
+@overload
+def qstr_info(verbose) -> None:
     ...
 
 
@@ -117,7 +134,7 @@ def kbd_intr(chr: int) -> None:
     ...
 
 
-def schedule(func: Callable[[_T], ...], arg: _T) -> None:
+def schedule(func: Callable[[_T], Any], arg: _T) -> None:
     """Schedule the function *func* to be executed "very soon".  The function
     is passed the value *arg* as its single argument.  "Very soon" means that
     the MicroPython runtime will do its best to execute the function at the

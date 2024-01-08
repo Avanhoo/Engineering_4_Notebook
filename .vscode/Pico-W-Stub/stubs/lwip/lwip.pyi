@@ -2,15 +2,12 @@
 Module: 'lwip' on micropython-v1.19.1-rp2
 """
 # MCU: {'ver': 'v1.19.1', 'build': '', 'sysname': 'rp2', 'platform': 'rp2', 'version': '1.19.1', 'release': '1.19.1', 'port': 'rp2', 'family': 'micropython', 'name': 'micropython', 'machine': 'Raspberry Pi Pico W with RP2040', 'nodename': 'rp2'}
-
 from typing import Any
-
 
 AF_INET = 2 # type: int
 AF_INET6 = 10 # type: int
 IPPROTO_IP = 0 # type: int
 IP_ADD_MEMBERSHIP = 1024 # type: int
-IP_DROP_MEMBERSHIP = 1025 # type: int
 SOCK_DGRAM = 2 # type: int
 SOCK_RAW = 3 # type: int
 SOCK_STREAM = 1 # type: int

@@ -2,13 +2,12 @@
 Module: 'usocket' on micropython-v1.19.1-rp2
 """
 # MCU: {'ver': 'v1.19.1', 'build': '', 'sysname': 'rp2', 'platform': 'rp2', 'version': '1.19.1', 'release': '1.19.1', 'port': 'rp2', 'family': 'micropython', 'name': 'micropython', 'machine': 'Raspberry Pi Pico W with RP2040', 'nodename': 'rp2'}
-from typing import Any
+from typing import Any, Optional
 
 AF_INET = 2 # type: int
 AF_INET6 = 10 # type: int
 IPPROTO_IP = 0 # type: int
 IP_ADD_MEMBERSHIP = 1024 # type: int
-IP_DROP_MEMBERSHIP = 1025 # type: int
 SOCK_DGRAM = 2 # type: int
 SOCK_RAW = 3 # type: int
 SOCK_STREAM = 1 # type: int
@@ -66,7 +65,7 @@ class socket():
         """
         ...
 
-    def read(self, size: int|None=None) -> bytes:
+    def read(self, size: Optional[int]=None) -> bytes:
         """Read up to *size* bytes from the socket. 
         Return a bytes object. If *size* is not given, 
         it reads all data available from the socket 
@@ -130,7 +129,7 @@ class socket():
         """Connect to a remote socket at address."""
         ...
 
-    def listen(self, backlog: int|None =None) -> Any:
+    def listen(self, backlog: Optional[int] =None) -> Any:
         """Enable a server to accept connections. If 
         *backlog* is specified, it must be at least 0 
         (if it's lower, it will be set to 0); and 

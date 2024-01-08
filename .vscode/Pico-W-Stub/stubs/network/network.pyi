@@ -1,6 +1,8 @@
 """
 Module: 'network' on micropython-v1.19.1-rp2
 """
+# MCU: {'ver': 'v1.19.1', 'build': '', 'sysname': 'rp2', 'platform': 'rp2', 'version': '1.19.1', 'release': '1.19.1', 'port': 'rp2', 'family': 'micropython', 'name': 'micropython', 'machine': 'Raspberry Pi Pico W with RP2040', 'nodename': 'rp2'}
+from typing import Any, Optional, Tuple, overload
 
 AP_IF: int = 1 # type: int
 STAT_CONNECTING: int = 1 # type: int
@@ -22,17 +24,20 @@ class WLAN():
         """
         ...
 
-    def active(self, is_active: bool=...) -> bool:
+    @overload
+    def active(self, is_active: bool) -> Any:
+        ...
+    
+    def active(self) -> bool:
         """Activate (“up”) or deactivate (“down”) network interface, if boolean 
         argument is passed. Otherwise, query current state if no argument is provided. 
         Most other methods require active interface.
         """
         ...
 
-    def config(self, parameter:str="config('ssid') for example", mac: bytes|None = None, essid: str|None =None, ssid: str|None=None, channel: int|None =None, security: int|None=None, key: str|None=None, password: str|None=None, txpower: int|float|None =None) -> None:
-        """DOT NOT USE config(paramter=...) this is just for config('...') to work
-
-        Get or set general network interface parameters. 
+    @overload
+    def config(self, parameter: str) -> str | int:
+        """Get or set general network interface parameters. 
         These methods allow to work with additional parameters 
         beyond standard IP configuration (as dealt with by 
         ``WLAN.ifconfig()``). These include network-specific and 
@@ -51,37 +56,51 @@ class WLAN():
         print(ap.config('ssid')) ; print(ap.config('channel'))
         Following are commonly supported parameters (availability of a specific parameter depends on network technology type, driver, and MicroPython port).
 
-        Parameter       | Description
+        Parameter  | Description
 
-        mac             | MAC address (bytes)
+        mac        | MAC address (bytes)
 
-        essid/ssid      | WiFi access point name (string)
+        ssid       | WiFi access point name (string)
 
-        channel         | WiFi channel (integer)
+        channel    | WiFi channel (integer)
 
-        security        | Security protocol supported (enumeration, see module constants)
+        hidden     | Whether SSID is hidden (boolean)
 
-        key / password  | Access key (string)
+        security   | Security protocol supported (enumeration, see module constants)
 
-        txpower         | Maximum transmit power in dBm (integer or float)
+        key        | Access key (string)
+
+        hostname   | The hostname that will be sent to DHCP (STA interfaces) and mDNS (if supported, both STA and AP)
+
+        reconnects | Number of reconnect attempts to make (integer, 0=none, -1=unlimited)
+
+        txpower    | Maximum transmit power in dBm (integer or float)
         """
         ...
 
-    def connect(self, ssid: str|None = None, key: str|None = None, *, bssid: ...=None) -> ...:
+    @overload
+    def config(self, mac: Optional[bytes] =None, ssid: Optional[str]=None, channel: Optional[int]=None, hidden: Optional[bool]=None, security: Any=None, key: Optional[str]=None, hostname: Optional[str]=None, reconnects: Optional[int]=None, txpower: Optional[int | float] =None) -> None:
+        ...
+
+    def connect(self, ssid: Optional[str] = None, key: Optional[str] = None, *, bssid: Any=None) -> Any:
         """Connect to the specified wireless network, using the specified key. 
         If bssid is given then the connection will be restricted to the access-point 
         with that MAC address (the ssid must also be specified in this case).
         """
         ...
 
-    def deinit(self, *args, **kwargs) -> ...:
+    def deinit(self, *args, **kwargs) -> Any:
         ...
 
     def disconnect(self) -> None:
         """Disconnect from the currently connected wireless network."""
         ...
 
-    def ifconfig(self, arg: tuple[str, str, str, str]=...) -> tuple[str, str, str, str]:
+    @overload
+    def ifconfig(self, arg: tuple[str, str, str, str]) -> tuple[str, str, str, str]:
+        ...
+
+    def ifconfig(self) -> tuple[str, str, str, str]:
         """Get/set IP-level network interface parameters: 
         IP address, subnet mask, gateway and DNS server. 
         When called with no arguments, this method returns 
@@ -93,7 +112,7 @@ class WLAN():
         """
         ...
 
-    def ioctl(self, *args, **kwargs) -> ...:
+    def ioctl(self, *args, **kwargs) -> Any:
         ...
 
     def isconnected(self) -> bool:
@@ -104,7 +123,7 @@ class WLAN():
         """
         ...
 
-    def scan(self) -> list[tuple[bytes, bytes, int, int, int, int]]:
+    def scan(self) -> list[Tuple[bytes, bytes, int, int, int, int]]:
         """Scan for the available wireless networks. Hidden networks – where the SSID is 
         not broadcast – will also be scanned if the WLAN interface allows it.
 
@@ -136,10 +155,14 @@ class WLAN():
         """
         ...
 
-    def send_ethernet(self, *args, **kwargs) -> ...:
+    def send_ethernet(self, *args, **kwargs) -> Any:
         ...
 
-    def status(self, param: str=...) -> int:
+    @overload
+    def status(self, param: str) -> int:
+        ...
+
+    def status(self) -> int:
         """Return the current status of the wireless connection.
 
 When called with no argument the return value describes the network link status. 
@@ -162,36 +185,5 @@ parameter to retrieve. Supported parameters in WiFI STA mode are: ``'rssi'``.
         """
         ...
 
-def country(code: str = "") -> str:
-    """
-    Get or set the two-letter ISO 3166-1 Alpha-2 country code to be used for radio compliance.
-
-    If the code parameter is provided, the country will be set to this value. If the function is called without parameters, it returns the current country.
-
-    The default code `XX` represents the “worldwide” region.
-    """
-    ...
-
-def hostname(name: str = "") -> str:
-    """
-    Get or set the hostname that will identify this 
-    device on the network. It is applied to all 
-    interfaces.
-
-    This hostname is used for:
-    - Sending to the DHCP server in the client 
-    request. (If using DHCP)
-
-    - Broadcasting via mDNS. (If enabled)
-
-    If the name parameter is provided, the hostname 
-    will be set to this value. If the function is 
-    called without parameters, it returns the 
-    current hostname.
-
-    The default hostname is typically the name of the board.
-    """
-    ...
-
-def route() -> list:
+def route(*args, **kwargs) -> Any:
     ...

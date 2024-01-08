@@ -3,7 +3,8 @@
 This module provides a general frame buffer which can be used to create
 bitmap images, which can then be sent to a display.
 """
-# MCU: {'ver': 'v1.19.1', 'build': '', 'sysname': 'rp2', 'platform': 'rp2', 'version': '1.19.1', 'release': '1.19.1', 'port': 'rp2', 'family': 'micropython', 'name': 'micropython', 'machine': 'Raspberry Pi Pico W with RP2040', 'nodename': 'rp2'}
+from typing import Any, Optional, overload
+
 
 class FrameBuffer:
     """
@@ -23,7 +24,7 @@ class FrameBuffer:
         fbuf.hline(0, 10, 96, 0xffff)
     """
 
-    def __init__(self, buffer: ..., width: int, height: int, format: int,
+    def __init__(self, buffer: Any, width: int, height: int, format: int,
                  stride: int = 0) -> None:
         """
         Construct a FrameBuffer object.  The parameters are:
@@ -55,7 +56,13 @@ class FrameBuffer:
         """Fill the entire FrameBuffer with the specified color."""
         ...
 
-    def pixel(self, x: int, y: int, c: int=...) -> None:
+    @overload
+    def pixel(self, x: int, y: int) -> int:
+        """Get the color value of the specified pixel."""
+        ...
+
+    @overload
+    def pixel(self, x: int, y: int, c: int) -> None:
         """Set the specified pixel to the given color."""
         ...
 
@@ -104,7 +111,7 @@ class FrameBuffer:
         """
         ...
 
-    def blit(self, fbuf: FrameBuffer, x: int, y: int, key: int|None = None) -> None:
+    def blit(self, fbuf: FrameBuffer, x: int, y: int, key: Optional[int] = None) -> None:
         """
         Draw another FrameBuffer on top of the current one at the given coordinates.
 
@@ -118,24 +125,17 @@ class FrameBuffer:
         """
         ...
 
-    def ellipse(self, *args, **kwargs) -> Any:
-        ...
-
-    def poly(self, *args, **kwargs) -> Any:
-        ...
-
-
-def FrameBuffer1(self, buffer: ..., width: int, height: int, stride: int = 0) -> None:
+def FrameBuffer1(self, buffer: Any, width: int, height: int, stride: int = 0) -> None:
     """
     Old FrameBuffer1 class.
     """
     ...
 
-GS2_HMSB = 5 # type: int
-GS4_HMSB = 2 # type: int
-GS8 = 6 # type: int
-MONO_HLSB = 3 # type: int
-MONO_HMSB = 4 # type: int
-MONO_VLSB = 0 # type: int
-MVLSB = 0 # type: int
-RGB565 = 1 # type: int
+GS2_HMSB = 5
+GS4_HMSB = 2
+GS8 = 6
+MONO_HLSB = 3
+MONO_HMSB = 4
+MONO_VLSB = 0
+MVLSB = 0
+RGB565 = 1

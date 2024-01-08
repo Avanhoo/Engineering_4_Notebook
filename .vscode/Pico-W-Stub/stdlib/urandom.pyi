@@ -1,8 +1,7 @@
 """
 Generate pseudo-random numbers.
 """
-from collections.abc import Sequence
-from typing import TypeVar, overload
+from typing import Optional, TypeVar, Sequence, overload
 
 _T = TypeVar("_T")
 
@@ -48,7 +47,7 @@ def randrange(start: int, stop: int, step: int = ...) -> int:
     """
     ...
 
-def seed(n: int|None =None,/) -> None: 
+def seed(n: Optional[int]=None,/) -> None: 
     """Initialise the random number generator module with the 
     seed *n* which should be an integer. When no argument (or ``None``) 
     is passed in it will (if supported by the port) initialise 
