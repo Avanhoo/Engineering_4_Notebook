@@ -1,4 +1,5 @@
-import board
+# type: ignore
+import board 
 from time import sleep
 import busio
 
