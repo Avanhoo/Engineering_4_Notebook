@@ -45,6 +45,8 @@ led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
 uart = busio.UART(board.GP4, board.GP5, baudrate=14400)
+uart.reset_input_buffer()
+#if uart.in_waiting:
 
 while True:
     data = uart.read(32)  # read up to 32 bytes
