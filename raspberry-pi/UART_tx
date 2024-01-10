@@ -1,0 +1,26 @@
+#type: ignore
+import board
+import busio
+import digitalio
+from time import sleep
+
+led = digitalio.DigitalInOut(board.LED)
+led.direction = digitalio.Direction.OUTPUT
+
+uart = busio.UART(board.GP0, board.GP1, baudrate=9600)
+print("alive")
+aileron = 9 # Placeholder for real values
+elevator = -1
+data = bytes(f"{aileron},{elevator}", 'utf-8')
+
+def send():
+    data = bytes(f"{aileron},{elevator}", 'utf-8')
+    uart.write(data)
+    print(f"Sent data: {data}")
+
+while True:
+    send()
+    led.value = True
+    sleep(.1)
+    led.value = False
+    sleep(.9)
