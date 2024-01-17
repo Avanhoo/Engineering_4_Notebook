@@ -70,7 +70,7 @@ def store():
     sleep(delay/2)
 #with open("/data.csv", "a") as datalog: # Opens the data 
 
-def roll(angle):
+def Roll(angle):
     scalar = 1 # allows for scaling or reversing
     lAiler.angle = angle*scalar
     rAiler.angle = angle*scalar*-1
@@ -111,6 +111,7 @@ pidR.setpoint = -15
 prevMove = (0, 0)
 while auto:
     getdata()
+    Roll(pidR(roll))
     # maintain bank angle to left (PID)
     while auto and (sensor.altitude <= 5): # in meters
         getdata()
