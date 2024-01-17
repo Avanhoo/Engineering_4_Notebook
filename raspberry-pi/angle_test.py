@@ -59,13 +59,15 @@ print(f"calib: {calib}")
 
 while True:
     imuval = round((imu.acceleration[2]+calib)/9.8, 2)
-    print(imuval)
     if imuval > 1:
         imuval = 1
     elif imuval < -1:
         imuval = -1
-    direction = imu.acceleration[1]
-    direction = direction / abs(direction)
+    direction = imu.acceleration[0]
+    try:
+        direction = direction / abs(direction)
+    except:
+        direction = 1
     
-    print(round(degrees(acos(imuval))))
+    print(round(degrees(acos(imuval)))*direction)
     sleep(.1)
