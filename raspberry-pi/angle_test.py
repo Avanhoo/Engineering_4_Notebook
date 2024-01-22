@@ -86,7 +86,7 @@ while True:
 
 
 
-    # type: ignore
+# type: ignore
 import board
 import busio
 import digitalio
@@ -137,20 +137,32 @@ pidR.time_fn = monotonic
 pidR.sample_time = 0.01
 prevMove = (0,0)
 
+calib = 0
 calib2 = 0
-for i in range (5):
-    calib2 += imu.acceleration[2]
+for i in range (5): # Finds baseline for sensors, DO NOT MOVE PICO while calibrating
+    calib += imu.acceleration[0]
     sleep(.1)
-calib2 = 9.8-(calib2/5)
-print(f"calib2: {calib2}")
+calib = 9.8-(calib/5)
 
 
 while True:
-    imuval2 = round((imu.acceleration[2]+calib2)/9.8, 2)
-    if imuval2 > 1:
-        imuval2 = 1
-    elif imuval2 < -1:
-        imuval2 = -1
+    imuval = round((imu.acceleration[0]+calib)/9.8, 2) # Calculates angle in rads
+    if imuval > 1:
+        imuval = 1
+    elif imuval < -1:
+        imuval = -1
+
     
-    print(round(degrees(asin(imuval2)))-90)
+    direction = imu.acceleration[0] # Makes angle negative when it should be
+    try:
+        direction = direction / abs(direction)
+    except:
+        direction = 1
+    
+    imuval  = (round(degrees(acos(imuval)))*direction)    
+
+
+
+
+    print (f"x: {imuval}")
     sleep(.1)

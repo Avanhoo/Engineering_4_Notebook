@@ -6,6 +6,7 @@ import pwmio
 from digitalio import DigitalInOut, Direction, Pull
 import adafruit_mpu6050 # Gyro
 import adafruit_mpl3115a2 # Altimeter
+import adafruit_gps # GPS
 from adafruit_motor import servo
 from time import sleep, monotonic
 from simple_pid import PID
@@ -35,6 +36,9 @@ rAiler = servo.Servo(pwm3) # Right Aileron
 imu = adafruit_mpu6050.MPU6050(i2c, address=0x68) # Accelerometer
 sensor = adafruit_mpl3115a2.MPL3115A2(i2c) # Altimeter
 #sensor.sealevel_pressure = 1070
+gps = adafruit_gps.GPS_GtopI2C(i2c, debug=False) # GPS
+gps.send_command(b"PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0") # Turn on the basic GGA and RMC info (what you typically want)
+gps.send_command(b"PMTK220,1000") # Sets update to every 1 second
 
 # PID & VARIABLES
 pairing = False
@@ -61,7 +65,7 @@ def getdata(): # Can be called on to refresh the information about the airplane'
     print(f"Alt: {sensor.altitude}")
 
 def store():
-    datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]},{tilt}\n") # Writes the time, x, y, z acceleration, and if tilted to a file 
+    datalog.write(f"{monotonic()},{imu.acceleration[0]},{imu.acceleration[1]},{imu.acceleration[2]}\n") # Writes the time, x, y, z acceleration to a file
     datalog.flush()
 
     sled.value = True # Flashes onboard LED

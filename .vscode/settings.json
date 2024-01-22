@@ -8,14 +8,13 @@
     "python.analysis.extraPaths": [
         "c:\\Users\\avanhoo2498\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.20-win32-x64\\boards\\0x239A\\0x8120",
         "c:\\Users\\avanhoo2498\\.vscode\\extensions\\joedevivo.vscode-circuitpython-0.1.20-win32-x64\\stubs",
-        "c:\\Users\\avanhoo2498\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20230920\\adafruit-circuitpython-bundle-py-20230920\\lib"
+        "c:\\Users\\avanhoo2498\\AppData\\Roaming\\Code\\User\\globalStorage\\joedevivo.vscode-circuitpython\\bundle\\20240118\\adafruit-circuitpython-bundle-py-20240118\\lib"
     ],
     "picowgo.syncFolder": "",
     "picowgo.openOnStart": true,
     "python.linting.pylintEnabled": false,
     "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingModuleSource": "none",
-        "reportShadowedImports": "none"
+        "reportMissingModuleSource": "none"
     },
     "circuitpython.board.version": null,
     "circuitpython.board.vid": "0x239A",
