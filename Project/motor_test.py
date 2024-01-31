@@ -1,3 +1,4 @@
+# type: ignore
 import board
 import busio
 import digitalio
