@@ -52,12 +52,12 @@ prevMove = (0,0)
 
 calib = 0
 calib2 = 0
-for i in range (5): # Finds baseline for sensors, DO NOT MOVE PICO while calibrating
+for i in range (150): # Finds baseline for sensors, DO NOT MOVE PICO while calibrating
     calib += imu.acceleration[0]
     calib2 += imu.acceleration[2]
-    sleep(.1)
-calib = -(calib/5)
-calib2 = -(calib/5)
+    sleep(.01)
+calib = -(calib/150)
+calib2 = -(calib/150)
 print(calib2)
 
 
@@ -94,4 +94,4 @@ while True:
         arr_count += 1# Shift window to right by one position
     
     print(moving_averages)
-        
+        # USE NP
