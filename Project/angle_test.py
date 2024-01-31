@@ -86,12 +86,12 @@ while True:
             pass
         else:
 
-        window = arr[arr_count : arr_count + window_size]# Store elements from i to i+window_size
+        window = [arr_count : arr_count + window_size]# Store elements from i to i+window_size
     
         window_average = round(sum(window) / window_size, 2)# Calculate the average of current window
         
-        # Shift window to right by one position
-        arr_count += 1
+        
+        arr_count += 1# Shift window to right by one position
     
     print(moving_averages)
         
