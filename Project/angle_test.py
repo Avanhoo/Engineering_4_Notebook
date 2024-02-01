@@ -77,21 +77,7 @@ while True:
     window_size = 5
     arr_count = 0
     arr.append(imuval)
-    
-    while arr_count < len(arr) - window_size + 1: # Running Average
-        if arr_count > 10000:
-            arr.clear()
-            window.clear()
-        if arr_count < window_size:
-            pass
-        else:
-
-        window = [arr_count : arr_count + window_size]# Store elements from i to i+window_size
-    
-        window_average = round(sum(window) / window_size, 2)# Calculate the average of current window
-        
-        
-        arr_count += 1# Shift window to right by one position
-    
-    print(moving_averages)
+    mean = np.convolve(imuval, np.ones(N)/N, mode='valid')
+    N+=1
+    print(mean)
         # USE NP
