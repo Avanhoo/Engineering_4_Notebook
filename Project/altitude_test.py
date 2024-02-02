@@ -26,7 +26,7 @@ for i in range(25):
 ground = (ground/25)
 print(f"ground: {ground}")
 
-win_size = 10
+win_size = 6 # window is smaller because altitude polls slowly
 enum = 0
 window = np.zeros(win_size) # Creates average array starting at ground
 
@@ -41,5 +41,5 @@ while True:
     final_alt = round(sum(window) / win_size,1)
     print(final_alt)
 
-    sleep(.01)
-    #ADD CONVOLVE
+    sleep(.01) # Altitude can only be polled every ~.5 seconds
+    # Use weighted average because reaction is slow
