@@ -77,7 +77,7 @@ while True:
     window_size = 5
     arr_count = 0
     arr.append(imuval)
-    mean = np.convolve(imuval, np.ones(N)/N, mode='valid')
+    mean = np.convolve(imuval, np.ones(N)/N)
     N+=1
     print(mean)
         # USE NP
